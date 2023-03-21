@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1vw 2vw;
+  justify-content: space-between;
+}
+
+.header .icons {
+  display: flex;
+}
+
+.header .icons span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: var(--side-icons);
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+
+/* .icons span:last-child {
+  margin-right: -10px;
+} */
+
+.header .icons span:hover {
+  background: var(--light-gray-bubble);
+}
+
+.header .current-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+}

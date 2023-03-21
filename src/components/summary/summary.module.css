@@ -1,0 +1,17 @@
+.summary {
+  background: var(--summary-tab-background);
+}
+
+@media screen and (max-width: 800px) {
+  .summary {
+    width: clamp(325px, 80vw, 500px);
+    min-height: 75vh;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .summary {
+    width: clamp(325px, 80vw, 600px);
+    min-height: 75vh;
+  }
+}

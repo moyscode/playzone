@@ -1,0 +1,118 @@
+.calendar {
+  padding: 0 2vw 2vw 2vw;
+}
+
+.summary-text {
+  padding-left: 0.25rem;
+  border: 2px solid rgb(3, 176, 206);
+  border-radius: 0.25rem;
+}
+.calendar ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days {
+  margin-bottom: 0px;
+}
+.calendar li {
+  color: var(--dark-grey);
+  width: calc(100% / 7);
+  font-size: 1rem;
+}
+
+.calendar .weeks li {
+  font-weight: 500;
+  cursor: default;
+}
+
+.calendar .weeks li:first-child,
+.calendar .weeks li:last-child {
+  color: var(--dull-unselected);
+}
+
+.calendar .days li {
+  z-index: var(--z-index-of-one);
+  position: relative;
+  /* margin-top: clamp(15px, 1vh, 30px); */
+}
+
+.calendar .days li:nth-child(7n + 7),
+.calendar .days li:nth-child(7n + 8),
+.calendar .days li:first-child {
+  color: var(--dull-unselected);
+}
+
+.days li.data-wrapper {
+  height: 100%;
+}
+
+.days li .dayInfo {
+  padding: 0.25vw;
+}
+
+.days .day {
+  position: absolute;
+  width: 50%;
+  border-radius: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* border: #9b59b6 1px solid; */
+  z-index: var(--z-index-of-two);
+  background-color: var(--day-color);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.days .dayInfo .active {
+  border-radius: 15%;
+  border: var(--day-border) 4px solid;
+}
+
+.days .dayInfo .hrs.weekday,
+.days .dayInfo .hrs.weekend {
+  z-index: var(--z-index-of-one);
+  border-radius: 10%;
+  aspect-ratio: 1.5;
+  padding-top: 50%;
+  /* border: #9b59b6 1px solid; */
+}
+
+.days .dayInfo .hrs.weekday {
+  background-color: var(--hrs-color);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.days .dayInfo .hrs.weekend {
+  background-color: var(--white);
+  cursor: default;
+}
+
+.days .dayInfo .hrs.weekday.playedAsPlanned {
+  background-color: var(--playedAsPlanned);
+}
+.days .dayInfo .hrs.weekday.notConfirmedButPlayed {
+  background-color: var(--notConfirmedButPlayed);
+}
+.days .dayInfo .hrs.weekday.notTurnedUp {
+  background-color: var(--notTurnedUp);
+}
+
+.no-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+@media screen and (max-width: 800px) {
+  .calendar {
+    width: clamp(325px, 80vw, 500px);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .calendar {
+    width: clamp(325px, 80vw, 600px);
+  }
+}

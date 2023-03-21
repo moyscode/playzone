@@ -1,0 +1,54 @@
+.table {
+  --border-rad: 0.5rem;
+  --border: 2px solid rgb(122, 121, 121);
+  border-radius: var(--border-rad);
+  border-spacing: 0;
+  width: 100%;
+  border: var(--border);
+}
+
+.table thead th span {
+  vertical-align: middle;
+  margin-left: 2px;
+  font-size: 1rem;
+}
+.table thead th .active {
+  color: rgb(2, 145, 97);
+  font-size: 3rem;
+}
+
+.table thead tr th {
+  border-bottom: var(--border);
+  border-right: var(--border);
+}
+
+.table th:last-child {
+  border-right: 0;
+}
+
+.table tbody tr {
+  cursor: pointer;
+  text-align: center;
+}
+
+/* .table tbody tr td {
+  border-right: var(--border);
+}
+.table tbody tr td:last-child {
+  border-right: 0;
+} */
+
+.tbody tr:nth-child(odd) {
+  background-color: rgb(231, 235, 236);
+}
+
+.hint {
+  padding-left: 1rem;
+}
+
+.no-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}

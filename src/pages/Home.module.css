@@ -1,0 +1,104 @@
+.main {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  --border-rad: 0.5rem;
+  --border: 1px solid rgb(122, 121, 121);
+  margin: 5% 0;
+}
+
+.main .confirm {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr;
+}
+
+.main .confirm .disabled {
+  cursor: auto;
+}
+
+.main .confirm .color {
+  color: var(--header-active-page);
+}
+
+.main .played {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main .played span {
+  grid-column: span 2;
+}
+
+.main .payment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: span 2;
+}
+
+.main .payment input,
+.main .payment button {
+  margin: 5px;
+}
+
+.main .payment input {
+  width: clamp(80px, 100%, 300px);
+  margin-left: 12px;
+}
+
+.main > div {
+  border: var(--border);
+  border-radius: var(--border-rad);
+  padding: 10px;
+}
+
+.main > a {
+  grid-row: 3; /*placing summary buttons to 3rd row*/
+}
+.main > a > button {
+  width: 100%;
+}
+
+.main button {
+  padding: 0 5px; /*padding on right & left*/
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .main .payment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: span 1;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .main .payment > input {
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .main .payment > button {
+    grid-row: 3; /*placing summary buttons to 3rd row*/
+    grid-column: span 2;
+  }
+
+  .main .payment input,
+  .main .payment button {
+    margin: 0;
+  }
+
+  .main > a {
+    grid-row: auto; /*switching summary rows to individual rows*/
+  }
+}
