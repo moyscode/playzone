@@ -33,7 +33,7 @@ export const SummaryTable = ({
     router.push(`/playerSummary/${player}`);
   };
 
-  const getAllPlayerData = useCallback(
+  const getAllPlayerDataForMonth = useCallback(
     async (url: string) => {
       const response = await fetch(url, {
         method: "POST",
@@ -63,8 +63,8 @@ export const SummaryTable = ({
   );
 
   useEffect(() => {
-    getAllPlayerData("/api/getAllPlayerDetails");
-  }, [getAllPlayerData]);
+    getAllPlayerDataForMonth("/api/getAllPlayerDetailsForMonth");
+  }, [getAllPlayerDataForMonth]);
 
   const columns = useMemo<ColumnDef<MonthlyPlayerData>[]>(
     () => [

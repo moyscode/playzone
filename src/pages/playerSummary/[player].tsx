@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { MonthContext } from "@/contexts/MonthContextProvider";
 import { PageHeader } from "@/components/pageHeader/pageHeader";
-import styles from "./index.module.css";
+import styles from "./playerSummary.module.css";
 import { Calendar } from "@/components/calendarView/calendar";
 
 export default function Home() {

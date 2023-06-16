@@ -27,7 +27,7 @@ export const CalendarBody = ({
   let player = asPath.substring(asPath.lastIndexOf("/") + 1);
   const adjustedMonthNumber = month + 1;
 
-  const getPlayerData = useCallback(
+  const getPlayerDataForMonth = useCallback(
     async (url: string) => {
       const response = await fetch(url, {
         method: "POST",
@@ -45,8 +45,8 @@ export const CalendarBody = ({
   );
 
   useEffect(() => {
-    getPlayerData("/api/getOnePlayerDetails");
-  }, [player, month, year, adjustedMonthNumber, getPlayerData]);
+    getPlayerDataForMonth("/api/getOnePlayerDetailsForMonth");
+  }, [player, month, year, adjustedMonthNumber, getPlayerDataForMonth]);
 
   const getSummaryValues = (data: PlayerData[]) => {
     let consolidatedPlayerData = data.reduce(

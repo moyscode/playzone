@@ -1,15 +1,54 @@
 import { PageHeader } from "@/components/pageHeader/pageHeader";
 import styles from "./Home.module.css";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   // Depending on timezone, your results will vary
   const todaysDate = new Date();
-  let tomorrowsDate = new Date();
-  tomorrowsDate.setDate(tomorrowsDate.getDate() + 1);
-  const currentTime = todaysDate.toLocaleTimeString("en-IN", { hour12: false });
+  const dateForDatabase = todaysDate.toISOString().split("T")[0];
 
+  const getNextWorkDay = (date: Date) => {
+    let day = date.getDay(),
+      add = 1;
+    if (day === 6) add = 2;
+    else if (day === 5) add = 3;
+    date.setDate(date.getDate() + add); // will correctly handle 31+1 > 32 > 1st next month
+    return date;
+  };
+  let tomorrowsDate = getNextWorkDay(new Date());
+
+  const currentTime = todaysDate.toLocaleTimeString("en-IN", { hour12: false });
   const isBeforeDeadline = +currentTime.substring(0, 2) > 17;
+
+  const [confirmation, setConfirmation] = useState(false);
+
+  const fetchData = async () => {
+    const res = await fetch("/api/addConfirmation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        player: "mani1",
+        confirmation: "yes",
+        date: dateForDatabase,
+      }),
+    });
+    const newData = await res.json();
+    console.log(newData[0].confirmation);
+    setConfirmation((current) => !current);
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    fetchData();
+  };
+
+  useEffect(() => {
+    console.log(confirmation);
+  }, [confirmation]);
+
   return (
     <>
       <PageHeader />
@@ -21,13 +60,27 @@ export default function Home() {
               {` ${tomorrowsDate.toDateString()}`}
             </span>
           </span>
-          <button disabled={isBeforeDeadline} className={`${styles.disabled}`}>
-            {isBeforeDeadline ? "Deadline over" : "Confirm"}
+          <button
+            disabled={isBeforeDeadline}
+            className={`${styles.disabled}`}
+            onClick={handleClick}
+          >
+            {isBeforeDeadline
+              ? "Deadline over"
+              : confirmation === false
+              ? "Confirm"
+              : "Confirmed"}
           </button>
         </div>
         <div className={`${styles.played}`}>
           <span>
-            Played Hrs for <b>{todaysDate.toDateString()}</b>
+            Played Hrs for{" "}
+            <input
+              type="date"
+              id="payment-date"
+              name="payment"
+              defaultValue={dateForDatabase}
+            ></input>
           </span>
           <select defaultValue={"1"} name="hrs" id="hrs">
             <option value="0.5">0.5</option>
@@ -53,7 +106,6 @@ export default function Home() {
         <Link href="/playerSummary">
           <button>Player Summary</button>
         </Link>
-
         <Link href="/groupSummary">
           <button>Group Summary</button>
         </Link>

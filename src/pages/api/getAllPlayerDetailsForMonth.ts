@@ -2,7 +2,7 @@ import { PlayerData, AllPlayerData } from "../../../ProjectTypes.types";
 import { getDB } from "./db";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const getAllPlayerDetails = async (
+const getAllPlayerDetailsForMonth = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -66,4 +66,4 @@ const getAllPlayerDetails = async (
     });
 };
 
-export default getAllPlayerDetails;
+export default getAllPlayerDetailsForMonth;

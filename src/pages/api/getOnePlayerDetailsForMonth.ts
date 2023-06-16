@@ -1,7 +1,7 @@
 import { getDB } from "./db";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const getOnePlayerDetails = async (
+const getOnePlayerDetailsForMonth = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -25,4 +25,4 @@ const getOnePlayerDetails = async (
     });
 };
 
-export default getOnePlayerDetails;
+export default getOnePlayerDetailsForMonth;
