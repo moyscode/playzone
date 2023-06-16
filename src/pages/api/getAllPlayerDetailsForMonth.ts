@@ -10,7 +10,7 @@ const getAllPlayerDetailsForMonth = async (
   const { db } = getDB();
   return await db
     .any(
-      `SELECT 	id, name,confirmation,hours_played,date
+      `SELECT id, name,confirmation,hours_played,date
       FROM play_details
       WHERE  EXTRACT(YEAR FROM date) = ${year}
       AND EXTRACT(MONTH FROM date) = ${month}`

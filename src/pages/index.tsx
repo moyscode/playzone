@@ -36,7 +36,6 @@ export default function Home() {
       }),
     });
     const newData = await res.json();
-    console.log(newData[0].confirmation);
     setConfirmation((current) => !current);
   };
 
@@ -45,9 +44,7 @@ export default function Home() {
     fetchData();
   };
 
-  useEffect(() => {
-    console.log(confirmation);
-  }, [confirmation]);
+  useEffect(() => {}, [confirmation]);
 
   return (
     <>
