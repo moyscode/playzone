@@ -9,6 +9,8 @@ const prodConfig = `${process.env.SUPABASE_DATABASE}://${process.env.SUPABASE_US
 
 const dbConnection = process.env.VERCEL_ENV ? prodConfig : devConfig;
 
+console.log(dbConnection);
+
 interface IDatabaseScope {
   db: pgPromise.IDatabase<any>;
   pgp: pgPromise.IMain;
