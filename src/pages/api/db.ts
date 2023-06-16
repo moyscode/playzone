@@ -5,10 +5,7 @@ const pgp = pgPromise({});
 
 const devConfig = `${process.env.PG_USER}://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
 
-const prodConfig = {
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-};
+const prodConfig = `${process.env.SUPABASE_DATABASE}://${process.env.SUPABASE_USER}:${process.env.SUPABASE_PASSWORD}@${process.env.SUPABASE_HOST}:${process.env.SUPABASE_PORT}/${process.env.SUPABASE_DATABASE_NAME}`;
 
 const dbConnection =
   process.env.NODE_ENV === "production" ? prodConfig : devConfig;
