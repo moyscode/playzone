@@ -7,8 +7,7 @@ const devConfig = `${process.env.PG_USER}://${process.env.PG_USER}:${process.env
 
 const prodConfig = `${process.env.SUPABASE_DATABASE}://${process.env.SUPABASE_USER}:${process.env.SUPABASE_PASSWORD}@${process.env.SUPABASE_HOST}:${process.env.SUPABASE_PORT}/${process.env.SUPABASE_DATABASE_NAME}`;
 
-// const dbConnection = process.env.VERCEL_ENV ? prodConfig : devConfig;
-const dbConnection = `${process.env.SUPABASE_DATABASE}://${process.env.SUPABASE_USER}:${process.env.SUPABASE_PASSWORD}@${process.env.SUPABASE_HOST}:${process.env.SUPABASE_PORT}/${process.env.SUPABASE_DATABASE_NAME}`;
+const dbConnection = process.env.VERCEL_ENV ? prodConfig : devConfig;
 
 console.log(dbConnection);
 
