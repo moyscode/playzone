@@ -21,7 +21,7 @@
 }
 
 .legend-text {
-  font-size: 1vmax;
+  font-size: clamp(0.75rem, 2vw, 1rem);
 }
 
 .playedAsPlanned {
@@ -39,14 +39,20 @@
   background-color: var(--extraTime);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 640px) {
   .legend {
-    width: clamp(325px, 80vw, 500px);
+    width: clamp(325px, 95vw, 600px);
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 768px) {
   .legend {
-    width: clamp(325px, 80vw, 600px);
+    width: clamp(325px, 90vw, 720px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .legend {
+    width: clamp(325px, 80vw, 1000px);
   }
 }

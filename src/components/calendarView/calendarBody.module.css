@@ -1,46 +1,46 @@
-.calendar {
+.calendar-body {
   padding: 0 2vw 2vw 2vw;
 }
 
 .summary-text {
   padding-left: 0.25rem;
-  border: 2px solid rgb(3, 176, 206);
+  border: 2px solid rgb(221, 220, 220);
   border-radius: 0.25rem;
+  font-size: clamp(0.75rem, 2vw, 1rem);
 }
-.calendar ul {
+.calendar-body ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   text-align: center;
 }
-.calendar .days {
+.calendar-body .days {
   margin-bottom: 0px;
 }
-.calendar li {
+.calendar-body li {
   color: var(--dark-grey);
   width: calc(100% / 7);
   font-size: 1rem;
 }
 
-.calendar .weeks li {
+.calendar-body .weeks li {
   font-weight: 500;
   cursor: default;
 }
 
-.calendar .weeks li:first-child,
-.calendar .weeks li:last-child {
+.calendar-body .weeks li:first-child,
+.calendar-body .weeks li:last-child {
   color: var(--dull-unselected);
 }
 
-.calendar .days li {
+.calendar-body .days li {
   z-index: var(--z-index-of-one);
   position: relative;
-  /* margin-top: clamp(15px, 1vh, 30px); */
 }
 
-.calendar .days li:nth-child(7n + 7),
-.calendar .days li:nth-child(7n + 8),
-.calendar .days li:first-child {
+.calendar-body .days li:nth-child(7n + 7),
+.calendar-body .days li:nth-child(7n + 8),
+.calendar-body .days li:first-child {
   color: var(--dull-unselected);
 }
 
@@ -49,7 +49,7 @@
 }
 
 .days li .dayInfo {
-  padding: 0.25vw;
+  padding: 0.5vw;
 }
 
 .days .day {
@@ -58,10 +58,14 @@
   border-radius: 10%;
   left: 50%;
   transform: translateX(-50%);
-  /* border: #9b59b6 1px solid; */
   z-index: var(--z-index-of-two);
   background-color: var(--day-color);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.weekend .day {
+  color: var(--dark-grey);
 }
 
 .days .dayInfo .active {
@@ -72,19 +76,22 @@
 .days .dayInfo .hrs.weekday,
 .days .dayInfo .hrs.weekend {
   z-index: var(--z-index-of-one);
-  border-radius: 10%;
+  border-radius: clamp(5px, 10%, 0.25rem);
   aspect-ratio: 1.5;
-  padding-top: 50%;
-  /* border: #9b59b6 1px solid; */
+  padding-top: 3vmax;
+  width: 100%;
+}
+
+.hrs {
+  font-size: clamp(12px, 3vw, 40px);
 }
 
 .days .dayInfo .hrs.weekday {
   background-color: var(--hrs-color);
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 }
 
 .days .dayInfo .hrs.weekend {
-  background-color: var(--white);
+  background-color: var(--dull-grey);
   cursor: default;
 }
 
@@ -105,14 +112,26 @@
   height: 50vh;
 }
 
-@media screen and (max-width: 800px) {
-  .calendar {
-    width: clamp(325px, 80vw, 500px);
+@media screen and (max-width: 640px) {
+  .calendar-body {
+    width: clamp(325px, 95vw, 600px);
   }
 }
 
-@media screen and (min-width: 800px) {
-  .calendar {
-    width: clamp(325px, 80vw, 600px);
+@media screen and (max-width: 768px) {
+  .calendar-body {
+    width: clamp(325px, 90vw, 720px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .calendar-body {
+    width: clamp(325px, 80vw, 1000px);
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .calendar-body {
+    width: clamp(325px, 80vw, 1000px);
   }
 }

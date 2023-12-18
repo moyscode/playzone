@@ -1,7 +1,7 @@
-import { CalendarBody } from "./calendarBody";
-import { Header } from "./header";
-import styles from "./calendar.module.css";
-import { Legends } from "./legends";
+import { CalendarBody } from './calendarBody';
+import { Header } from './header';
+import styles from './calendar.module.css';
+import { Legends } from './legends';
 
 export const Calendar = ({
   date,
@@ -17,7 +17,7 @@ export const Calendar = ({
   onClick: (val: string) => void;
 }) => {
   return (
-    <div className={`wrapper ${styles.calendar}`}>
+    <div className={`wrapper ${styles['calendar']}`}>
       <Header month={month} year={year} onClick={onClick} />
       <CalendarBody
         date={date}

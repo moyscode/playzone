@@ -1,9 +1,11 @@
 .table {
   --border-rad: 0.5rem;
-  --border: 2px solid rgb(122, 121, 121);
+  --border: 2px solid rgb(236, 235, 235);
   border-radius: var(--border-rad);
   border-spacing: 0;
-  width: 100%;
+  width: 95%;
+  margin-bottom: 1em;
+  margin-left: 2.5%;
   border: var(--border);
 }
 
@@ -31,19 +33,12 @@
   text-align: center;
 }
 
-/* .table tbody tr td {
-  border-right: var(--border);
-}
-.table tbody tr td:last-child {
-  border-right: 0;
-} */
-
 .tbody tr:nth-child(odd) {
-  background-color: rgb(231, 235, 236);
+  background-color: rgb(242, 243, 243);
 }
 
 .hint {
-  padding-left: 1rem;
+  margin-left: 2.5%;
 }
 
 .no-summary {

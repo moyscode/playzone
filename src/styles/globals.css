@@ -1,26 +1,71 @@
-/* Import Google font - Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/* Import Google font - Poppins & ZCOOL XiaoWei */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@300;400;500&family=ZCOOL+XiaoWei&display=swap');
 
 /* Import Google font - Material Symbols */
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 :root {
-  --page-background: hsl(0, 0%, 100%);
-  --white: hsl(0, 0%, 100%); /*color for calendar tab*/
+  --rem: 16px;
+
+  /*Colors*/
+  --off-white: #fdfdfd;
+  --charcoal: #2e2e2e;
+  --dark-grey: #8a8a8a;
+  --lighter-grey: #c7c4c4;
+  --faint-grey: #f8f6f6; /*color for calendar tab*/
+  --dull-grey: #e0e0e0;
+  --blue1: #48cae4;
+  --blue2: #00b4d8;
+  --blue3: #0096c7;
+  --blue4: #0077b6;
+  --blue5: #023e8a;
+  --blue6: #03045e;
+  --blue7: #1f2041;
+  --purple: #4b3f72;
+  --dull-yellow: #ffc857;
+  /*colors that go well with black text*/
+  --light-green: #8cb369;
+  --light-yellow: #f4e285;
+  --dark-yellow: #f4a259;
+  --dark-green: #5b8e7d;
+  --vibrant-red: #bc4b51;
+
+  --page-background: var(--faint-grey);
+  --white: #f7f7f7;
+
+  /*Font Sizes*/
+  --baseFontSize: 1rem;
+  --baseNavSize: 0.64rem;
+  --smallFontSize: 0.8rem;
+  --smallestFontSize: 0.512rem;
+
+  --extra-big-heading: 3.052rem;
+  --extra-heading: 2.441rem;
+  --heading-one: 1.953rem;
+  --heading-two: 1.563rem;
+  --heading-three: 1.25rem;
+  --heading-four: var(--baseFontSize);
+  --heading-five: var(--smallFontSize);
+
+  --line-height: 1.6;
+
+  /*Fonts*/
+  --headingFont: 'Poppins', sans-serif;
+  --bodyFont: 'Raleway', sans-serif;
+
   --summary-tab-background: hsl(0, 0%, 100%);
-  --manage-tab-background: hsl(207, 73%, 68%);
   --side-icons: hsl(0, 0%, 53%);
   --light-gray-bubble: hsl(0, 0%, 95%);
   --dark-grey: hsl(0, 0%, 20%);
   --dull-unselected: hsl(0, 1%, 80%);
-  --header-unselected: hsl(240, 0%, 54%);
-  --day-border: hsl(323, 81%, 21%);
-  --day-color: hsl(187, 36%, 65%);
-  --hrs-color: hsl(0, 0%, 92%);
-  --playedAsPlanned: hsl(133, 94%, 40%);
-  --notTurnedUp: hsl(41, 89%, 47%);
-  --notConfirmedButPlayed: hsl(231, 93%, 61%);
-  --extraTime: hsl(298, 93%, 61%);
+  --header-unselected: var(--lighter-grey);
+  --day-border: var(--blue4);
+  --day-color: hsl(188, 33%, 72%);
+  --hrs-color: var(--dull-grey);
+  --playedAsPlanned: var(--light-green);
+  --notTurnedUp: var(--dark-yellow);
+  --notConfirmedButPlayed: var(--blue4);
+  --extraTime: var(--purple);
   --header-active-page: hsl(209, 93%, 42%);
   --z-index-of-one: 1;
   --z-index-of-two: 2;
@@ -39,8 +84,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--headingFont);
+  font-size: var(--rem);
 }
+
 body {
   display: flex;
   align-items: center;
@@ -57,16 +104,30 @@ body {
   z-index: var(--wrapper-z-index);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 640px) {
   #__next {
-    width: clamp(325px, 95vw, 700px);
+    width: clamp(325px, 95vw, 600px);
     height: 100dvh;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 768px) {
   #__next {
-    width: clamp(325px, 80vw, 1200px);
+    width: clamp(325px, 90vw, 720px);
+    height: 100dvh;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #__next {
+    width: clamp(325px, 80vw, 1000px);
+    height: 100dvh;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  #__next {
+    width: clamp(325px, 80vw, 1000px);
     height: 100dvh;
   }
 }

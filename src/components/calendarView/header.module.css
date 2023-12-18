@@ -22,10 +22,6 @@
   border-radius: 50%;
 }
 
-/* .icons span:last-child {
-  margin-right: -10px;
-} */
-
 .header .icons span:hover {
   background: var(--light-gray-bubble);
 }

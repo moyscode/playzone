@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
-import styles from "./calendarBody.module.css";
+import { useCallback, useEffect, useState } from 'react';
+import styles from './calendarBody.module.css';
 import {
   PlayerData,
   MonthlyPlayerData,
   MonthlyPlayerDataNoCost,
-} from "../../../ProjectTypes.types";
-import { useRouter } from "next/router";
+} from '../../../ProjectTypes.types';
+import { useRouter } from 'next/router';
 
 export const CalendarBody = ({
   date,
@@ -24,15 +24,15 @@ export const CalendarBody = ({
     useState<MonthlyPlayerData>();
 
   const { asPath } = useRouter();
-  let player = asPath.substring(asPath.lastIndexOf("/") + 1);
+  let player = asPath.substring(asPath.lastIndexOf('/') + 1);
   const adjustedMonthNumber = month + 1;
 
   const getPlayerDataForMonth = useCallback(
     async (url: string) => {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ player, year, adjustedMonthNumber }),
       });
@@ -45,7 +45,7 @@ export const CalendarBody = ({
   );
 
   useEffect(() => {
-    getPlayerDataForMonth("/api/getOnePlayerDetailsForMonth");
+    getPlayerDataForMonth('/api/getOnePlayerDetailsForMonth');
   }, [player, month, year, adjustedMonthNumber, getPlayerDataForMonth]);
 
   const getSummaryValues = (data: PlayerData[]) => {
@@ -60,10 +60,10 @@ export const CalendarBody = ({
             name: current.name,
             hours_played: +current.hours_played,
             confirmedAndNotPlayed:
-              current.confirmation === "yes" && +current.hours_played === 0
+              current.confirmation === 'yes' && +current.hours_played === 0
                 ? 1
                 : 0,
-            notConfirmedAndPlayed: current.confirmation === "no" ? 1 : 0,
+            notConfirmedAndPlayed: current.confirmation === 'no' ? 1 : 0,
           };
           accumulator.push(obj);
         } else {
@@ -75,11 +75,11 @@ export const CalendarBody = ({
           //update the specific object using index
           accumulator[objIndex].hours_played += +current.hours_played;
 
-          if (current.confirmation === "yes" && +current.hours_played === 0) {
+          if (current.confirmation === 'yes' && +current.hours_played === 0) {
             accumulator[objIndex].confirmedAndNotPlayed++;
           }
 
-          if (current.confirmation === "no") {
+          if (current.confirmation === 'no') {
             accumulator[objIndex].notConfirmedAndPlayed++;
           }
         }
@@ -92,9 +92,9 @@ export const CalendarBody = ({
     const monthlyData: any = consolidatedPlayerData.map((obj: any) => ({
       ...obj,
       cost:
-        obj["hours_played"] * 90 +
-        (obj["confirmedAndNotPlayed"] + obj["notConfirmedAndPlayed"] > 1
-          ? (obj["confirmedAndNotPlayed"] + obj["notConfirmedAndPlayed"] - 1) *
+        obj['hours_played'] * 90 +
+        (obj['confirmedAndNotPlayed'] + obj['notConfirmedAndPlayed'] > 1
+          ? (obj['confirmedAndNotPlayed'] + obj['notConfirmedAndPlayed'] - 1) *
             45
           : 0),
     }));
@@ -115,7 +115,7 @@ export const CalendarBody = ({
 
   const renderEmptyDays = (day: number) => {
     let keyVal = `e${day}`; //'e' is there just to differentiate the keys of "Empty days" with "Days"
-    return <li className="inactive" key={keyVal}></li>;
+    return <li className='inactive' key={keyVal}></li>;
   };
 
   let emptyDaysOfMonth = [];
@@ -129,8 +129,8 @@ export const CalendarBody = ({
       day === date.getDate() &&
       month === new Date().getMonth() &&
       year === new Date().getFullYear()
-        ? "active"
-        : "";
+        ? 'active'
+        : '';
 
     //check if the days are weekends (for weekends, we shot stop symbol)
     let isWeekend =
@@ -142,14 +142,14 @@ export const CalendarBody = ({
       new Date(year, month, day).toISOString().substring(0, 10)
     );
 
-    let playedHrs = "-";
-    let confirmation = "";
+    let playedHrs = '-';
+    let confirmation = '';
 
     // If the player has played on that day, we get additional data to show it appropriately on the calendar;
     if (played) {
       let playedData: PlayerData[] = playerData.filter((item: PlayerData) => {
         return (
-          item["date"].substring(0, 10) ===
+          item['date'].substring(0, 10) ===
           new Date(year, month, day).toISOString().substring(0, 10)
         );
       });
@@ -159,9 +159,9 @@ export const CalendarBody = ({
 
     if (isWeekend) {
       return (
-        <li key={day} className={`${styles.weekend}`}>
+        <li key={day}>
           <div className={`${styles.dayInfo} ${styles.weekend}`}>
-            <div className={`${styles.day} ${styles.weekend}`}>{day}</div>
+            <div className={`${styles.day} `}>{day}</div>
             <div
               className={`material-symbols-rounded ${styles[`${isToday}`]} ${
                 styles.weekend
@@ -181,18 +181,18 @@ export const CalendarBody = ({
               className={`${styles[`${isToday}`]} ${styles.weekday} ${
                 styles.hrs
               } ${
-                confirmation === "yes" && +playedHrs > 0
+                confirmation === 'yes' && +playedHrs > 0
                   ? `${styles.playedAsPlanned}`
-                  : ""
+                  : ''
               } ${
-                confirmation === "no" && +playedHrs > 0
+                confirmation === 'no' && +playedHrs > 0
                   ? `${styles.notConfirmedButPlayed}`
-                  : ""
+                  : ''
               }
               ${
-                confirmation === "yes" && +playedHrs == 0
+                confirmation === 'yes' && +playedHrs == 0
                   ? `${styles.notTurnedUp}`
-                  : ""
+                  : ''
               }`}
             >
               {playedHrs}
@@ -219,13 +219,13 @@ export const CalendarBody = ({
   return (
     <>
       {isEmptyObject ? (
-        <div className={`${styles["no-summary"]}`}>
+        <div className={`${styles['no-summary']}`}>
           {`Data does not exist for ${currentMonth} ${year}`}
         </div>
       ) : (
-        <div className={`${styles.calendar}`}>
+        <div className={`${styles['calendar-body']}`}>
           <div
-            className={`${styles["summary-text"]}`}
+            className={`${styles['summary-text']}`}
           >{`${player} has played for ${
             monthlyPlayerData?.hours_played
           } hrs with ${

@@ -1,37 +1,81 @@
 .wrapper {
-  width: auto;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 1rem;
   z-index: var(--header-z-index);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--off-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 4px rgba(86, 86, 86, 0.1), 0 -4px 4px rgba(86, 86, 86, 0.1);
+}
+
+.wrapper .links {
+  display: flex;
+}
+
+.wrapper .links .link {
+  display: flex;
   justify-content: center;
-  margin-bottom: 5px;
+  align-items: center;
+}
+.wrapper .links .link .link-logo {
+  margin: 0 0.25rem;
+}
+
+.wrapper .logo {
+  font-family: 'ZCOOL XiaoWei', sans-serif;
+  font-size: 1.5rem;
+  font-style: bold;
+  margin: 0.5rem;
+  margin-left: 1rem;
 }
 
 .wrapper a {
   text-decoration: none;
-  color: var(--dark-grey);
-  font-size: clamp(8px, 1rem, 20px);
-  margin: 0 15px;
+  font-family: var(--headingFont);
+  font-size: clamp(16px, 1.5rem, 24px);
+  margin: 0 1rem;
 }
 
-.wrapper .active {
-  text-decoration: underline 2px solid var(--header-active-page);
-  text-underline-offset: 0.2rem;
+.wrapper .links .active {
+  color: var(--blue5);
 }
 
-.wrapper .inactive:hover {
-  text-decoration: underline 2px solid var(--header-active-page);
-  text-underline-offset: 0.2rem;
+.wrapper .links .active .link {
+  border-bottom: 2px solid var(--blue5);
 }
 
-.wrapper .inactive {
+.wrapper .links .active .link .link-logo {
+  filter: invert(17%) sepia(97%) saturate(1536%) hue-rotate(199deg)
+    brightness(91%) contrast(105%);
+}
+
+.wrapper .links .inactive {
   color: var(--header-unselected);
 }
+.wrapper .links .inactive:hover {
+  border-bottom: 2px solid var(--header-unselected);
+}
 
-@media screen and (max-width: 800px) {
-  .wrapper a {
-    font-size: clamp(8px, 0.75rem, 16px);
+.wrapper .links .inactive:hover .link .link-logo {
+  filter: invert(17%) sepia(97%) saturate(1536%) hue-rotate(199deg)
+    brightness(91%) contrast(105%);
+}
+
+@media (max-width: 640px) {
+  .wrapper .links .link .link-text {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper .links .link .link-text {
+    font-size: clamp(12px, 1rem, 16px);
+  }
+  .wrapper .links .link img {
+    width: 20px;
+    height: 20px;
   }
 }
