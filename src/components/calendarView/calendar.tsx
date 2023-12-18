@@ -17,7 +17,7 @@ export const Calendar = ({
   onClick: (val: string) => void;
 }) => {
   return (
-    <div className={`wrapper ${styles['calendar']}`}>
+    <div className={`${styles['calendar']}`}>
       <Header month={month} year={year} onClick={onClick} />
       <CalendarBody
         date={date}

@@ -51,9 +51,9 @@ export const PageHeader = () => {
   ));
 
   return (
-    <div className={`${styles.wrapper}`}>
-      <div className={`${styles['logo']}`}>Paul A</div>
+    <header className={`${styles.wrapper}`}>
+      <div className={`${styles['logo']}`}>PaulA</div>
       <div className={`${styles['links']}`}>{linksToRender}</div>
-    </div>
+    </header>
   );
 };

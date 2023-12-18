@@ -2,5 +2,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5% 0;
+  margin: clamp(32px, 5%, 52px) 0;
 }

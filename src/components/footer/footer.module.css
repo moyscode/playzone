@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--off-white);
+  border-radius: 0.5rem;
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .footer {
+    width: clamp(325px, 95vw, 600px);
+  }
+}
+
+@media screen and (640px <= width <= 768px) {
+  .footer {
+    width: clamp(601px, 99vw, 750px);
+  }
+}
+
+@media screen and (768px <= width) {
+  .footer {
+    width: clamp(751px, 80vw, 1000px);
+  }
+}

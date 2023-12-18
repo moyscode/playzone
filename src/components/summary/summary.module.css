@@ -1,17 +1,11 @@
 .summary {
   background: var(--summary-tab-background);
+  width: 100%;
+  min-height: 75vh;
 }
-
-@media screen and (max-width: 800px) {
-  .summary {
-    width: 100%;
-    min-height: 75vh;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .summary {
-    width: 100%;
-    min-height: 75vh;
-  }
+.wrapper {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  z-index: var(--wrapper-z-index);
 }

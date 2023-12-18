@@ -8,7 +8,7 @@
   align-items: center;
   background-color: var(--off-white);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 4px rgba(86, 86, 86, 0.1), 0 -4px 4px rgba(86, 86, 86, 0.1);
+  box-shadow: var(--box-shadow);
 }
 
 .wrapper .links {
@@ -70,7 +70,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (640px <= width >= 768px) {
   .wrapper .links .link .link-text {
     font-size: clamp(12px, 1rem, 16px);
   }

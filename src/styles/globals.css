@@ -29,6 +29,8 @@
   --dark-yellow: #f4a259;
   --dark-green: #5b8e7d;
   --vibrant-red: #bc4b51;
+  --box-shadow: 0 2px 2px rgba(86, 86, 86, 0.1),
+    0 -1px 2px rgba(86, 86, 86, 0.1);
 
   --page-background: var(--faint-grey);
   --white: #f7f7f7;
@@ -100,34 +102,28 @@ body {
   position: relative;
   height: fit-content;
   border-radius: 10px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1), 0 -3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   z-index: var(--wrapper-z-index);
+}
+
+#__next {
+  height: 100dvh;
 }
 
 @media screen and (max-width: 640px) {
   #__next {
     width: clamp(325px, 95vw, 600px);
-    height: 100dvh;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (640px <= width <= 768px) {
   #__next {
-    width: clamp(325px, 90vw, 720px);
-    height: 100dvh;
+    width: clamp(601px, 99vw, 750px);
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (768px <= width) {
   #__next {
-    width: clamp(325px, 80vw, 1000px);
-    height: 100dvh;
-  }
-}
-
-@media screen and (width >= 1024px) {
-  #__next {
-    width: clamp(325px, 80vw, 1000px);
-    height: 100dvh;
+    width: clamp(751px, 80vw, 1000px);
   }
 }

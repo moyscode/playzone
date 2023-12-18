@@ -1,6 +1,6 @@
-import styles from "./summary.module.css";
-import { SummaryTable } from "./summaryTable";
-import { Header } from "../calendarView/header";
+import styles from './summary.module.css';
+import { SummaryTable } from './summaryTable';
+import { Header } from '../calendarView/header';
 
 export const Summary = ({
   month,
@@ -14,7 +14,7 @@ export const Summary = ({
   onClick: (val: string) => void;
 }) => {
   return (
-    <div className={`wrapper ${styles.summary}`}>
+    <div className={`${styles.wrapper} ${styles.summary}`}>
       <Header month={month} year={year} onClick={onClick} />
       <SummaryTable
         currentMonth={month}
