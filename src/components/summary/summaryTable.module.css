@@ -6,6 +6,7 @@
   width: 95%;
   margin-bottom: 1em;
   margin-left: 2.5%;
+  background-color: white;
   border: var(--border);
 }
 
@@ -15,17 +16,22 @@
   font-size: 1rem;
 }
 .table thead th .active {
-  color: rgb(2, 145, 97);
-  font-size: 3rem;
+  color: rgb(6, 224, 152);
+  font-size: 1rem;
+  scale: 2;
 }
 
 .table thead tr th {
-  border-bottom: var(--border);
-  border-right: var(--border);
+  background-color: var(--blueMain);
+  color: white;
+  font-size: 400;
 }
 
 .table th:last-child {
-  border-right: 0;
+  border-top-right-radius: var(--border-rad);
+}
+.table th:first-child {
+  border-top-left-radius: var(--border-rad);
 }
 
 .table tbody tr {
@@ -46,4 +52,23 @@
   justify-content: center;
   align-items: center;
   height: 50vh;
+}
+
+.left-top,
+.right-bottom {
+  position: absolute;
+  filter: grayscale();
+  z-index: var(--background-z-index);
+  opacity: 0.5;
+  transform: scale(-1, 1);
+}
+
+.left-top {
+  left: 0;
+  top: 0;
+}
+
+.right-bottom {
+  right: 0;
+  bottom: 0;
 }

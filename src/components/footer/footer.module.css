@@ -6,6 +6,7 @@
   border-radius: 0.5rem;
   position: fixed;
   bottom: 0;
+  box-shadow: 2px 0 2px rgba(86, 86, 86, 0.1), 1px 0 2px rgba(86, 86, 86, 0.1);
 }
 
 @media screen and (max-width: 640px) {

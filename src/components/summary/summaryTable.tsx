@@ -1,11 +1,15 @@
-import styles from "./summaryTable.module.css";
+import styles from './summaryTable.module.css';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import LeftBottom from '../../assets/svg/LeftBottom.svg';
+import RightTop from '../../assets/svg/RightTop.svg';
+import NotFound from '../../assets/svg/not_found2.svg';
 import {
   MonthlyPlayerData,
   AllMonthlyPlayerData,
-} from "../../../ProjectTypes.types";
-import { useRouter } from "next/router";
+} from '../../../ProjectTypes.types';
 
-import { useCallback, useEffect, useState, useReducer, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo } from 'react';
 import {
   flexRender,
   getCoreRowModel,
@@ -13,7 +17,7 @@ import {
   useReactTable,
   getSortedRowModel,
   ColumnDef,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 
 export const SummaryTable = ({
   currentMonth,
@@ -36,9 +40,9 @@ export const SummaryTable = ({
   const getAllPlayerDataForMonth = useCallback(
     async (url: string) => {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ year, month }),
       });
@@ -46,47 +50,45 @@ export const SummaryTable = ({
       const monthlyData = data.map((obj: any) => ({
         ...obj,
         cost:
-          obj["hours_played"] * 90 +
-          (obj["confirmedAndNotPlayed"] + obj["notConfirmedAndPlayed"] > 1
-            ? (obj["confirmedAndNotPlayed"] +
-                obj["notConfirmedAndPlayed"] -
+          obj['hours_played'] * 90 +
+          (obj['confirmedAndNotPlayed'] + obj['notConfirmedAndPlayed'] > 1
+            ? (obj['confirmedAndNotPlayed'] +
+                obj['notConfirmedAndPlayed'] -
                 1) *
               45
             : 0),
       }));
 
       setAllPlayerData(monthlyData);
-      // console.log(data);
-      // return data;
     },
     [year, month]
   );
 
   useEffect(() => {
-    getAllPlayerDataForMonth("/api/getAllPlayerDetailsForMonth");
+    getAllPlayerDataForMonth('/api/getAllPlayerDetailsForMonth');
   }, [getAllPlayerDataForMonth]);
 
   const columns = useMemo<ColumnDef<MonthlyPlayerData>[]>(
     () => [
       {
-        accessorKey: "name",
-        header: () => "Name",
+        accessorKey: 'name',
+        header: () => 'Name',
       },
       {
-        accessorKey: "hours_played",
-        header: () => "Hrs",
+        accessorKey: 'hours_played',
+        header: () => 'Hrs',
       },
       {
-        accessorKey: "confirmedAndNotPlayed",
-        header: () => "C&NP",
+        accessorKey: 'confirmedAndNotPlayed',
+        header: () => 'C&NP',
       },
       {
-        accessorKey: "notConfirmedAndPlayed",
-        header: () => "NC&P",
+        accessorKey: 'notConfirmedAndPlayed',
+        header: () => 'NC&P',
       },
       {
-        accessorKey: "cost",
-        header: () => "COST",
+        accessorKey: 'cost',
+        header: () => 'COST',
       },
     ],
     []
@@ -108,11 +110,36 @@ export const SummaryTable = ({
   return (
     <>
       {isEmptyArray ? (
-        <div className={`${styles["no-summary"]}`}>
-          {`Data does not exist for ${currentMonth} ${year}`}
+        <div className={`${styles['no-summary']}`}>
+          <Image
+            src={RightTop}
+            alt='background'
+            className={`${styles['left-top']}`}
+          />
+
+          <Image
+            src={NotFound}
+            alt='background'
+            className={`${styles['not-found']}`}
+          />
+          <Image
+            src={LeftBottom}
+            alt='background'
+            className={`${styles['right-bottom']}`}
+          />
         </div>
       ) : (
         <>
+          <Image
+            src={RightTop}
+            alt='background'
+            className={`${styles['left-top']}`}
+          />
+          <Image
+            src={LeftBottom}
+            alt='background'
+            className={`${styles['right-bottom']}`}
+          />
           <p className={`${styles.hint}`}>
             Click on the name to see the details
           </p>
@@ -125,8 +152,8 @@ export const SummaryTable = ({
                       key={header.id}
                       {...{
                         className: header.column.getCanSort()
-                          ? "cursor-pointer select-none"
-                          : "",
+                          ? 'cursor-pointer select-none'
+                          : '',
                         onClick: header.column.getToggleSortingHandler(),
                       }}
                     >
@@ -137,15 +164,15 @@ export const SummaryTable = ({
                       <span
                         className={`material-symbols-rounded
                     ${
-                      header.column.getIsSorted() === "asc" ||
-                      header.column.getIsSorted() === "desc"
+                      header.column.getIsSorted() === 'asc' ||
+                      header.column.getIsSorted() === 'desc'
                         ? styles.active
-                        : ""
+                        : ''
                     }`}
                       >
-                        {{ asc: "arrow_drop_up", desc: "arrow_drop_down" }[
+                        {{ asc: 'arrow_drop_up', desc: 'arrow_drop_down' }[
                           header.column.getIsSorted() as string
-                        ] ?? "sort"}
+                        ] ?? 'sort'}
                       </span>
                     </th>
                   ))}

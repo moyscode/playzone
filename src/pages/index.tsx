@@ -1,7 +1,9 @@
 import { PageHeader } from '@/components/pageHeader/pageHeader';
 import { Footer } from '../components/footer/Footer';
 import styles from './Home.module.css';
-import Link from 'next/link';
+import Image from 'next/image';
+import Players from '../assets/svg/Badminton_players.svg';
+import Smash from '../assets/svg/Badminton_jumpSmash_ladyMan.svg';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -22,7 +24,11 @@ export default function Home() {
   const currentTime = todaysDate.toLocaleTimeString('en-IN', { hour12: false });
   const isBeforeDeadline = +currentTime.substring(0, 2) > 17;
 
+  const hrsList = [0.5, 1.0, 1.5, 2.0, 2.5];
+
   const [confirmation, setConfirmation] = useState(false);
+  const [hrs, setHrs] = useState(1);
+  console.log('🚀 ~ file: index.tsx:31 ~ Home ~ hrs:', hrs);
 
   const fetchData = async () => {
     const res = await fetch('/api/addConfirmation', {
@@ -40,6 +46,18 @@ export default function Home() {
     setConfirmation((current) => !current);
   };
 
+  const confirmButtonTextFunction = () => {
+    if (isBeforeDeadline) {
+      return 'Deadline over';
+    } else if (confirmation === false) {
+      return 'Confirm';
+    } else {
+      return 'Confirmed';
+    }
+  };
+
+  const confirmButtonText = confirmButtonTextFunction();
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     fetchData();
@@ -52,61 +70,70 @@ export default function Home() {
       <PageHeader />
       <main className={`${styles.main}`}>
         <div className={`${styles.confirm}`}>
-          <span>
-            Confirmation for
-            <span className={`${styles.color}`}>
-              {` ${tomorrowsDate.toDateString()}`}
-            </span>
-          </span>
-          <button
-            disabled={isBeforeDeadline}
-            className={`${styles.disabled}`}
-            onClick={handleClick}
-          >
-            {isBeforeDeadline
-              ? 'Deadline over'
-              : confirmation === false
-              ? 'Confirm'
-              : 'Confirmed'}
-          </button>
+          <Image
+            src={Players}
+            alt='background'
+            className={`${styles['players']}`}
+          />
+          <section className={`${styles['confirm-text']}`}>
+            <h3>Confirmation</h3>
+            <p>
+              {`Confirm your participation for ${tomorrowsDate.toDateString()}`}
+            </p>
+            <button
+              disabled={isBeforeDeadline}
+              className={`${styles['confirm-button']} ${styles.disabled}`}
+              onClick={handleClick}
+            >
+              {confirmButtonText}
+            </button>
+          </section>
         </div>
         <div className={`${styles.played}`}>
-          <span>
-            Played Hrs for{' '}
-            <input
-              type='date'
-              id='payment-date'
-              name='payment'
-              defaultValue={dateForDatabase}
-            ></input>
-          </span>
-          <select defaultValue={'1'} name='hrs' id='hrs'>
-            <option value='0.5'>0.5</option>
-            <option value='1'>1</option>
-            <option value='1.5'>1.5</option>
-            <option value='2'>2</option>
-            <option value='2.5'>2.5</option>
-          </select>
-          <button>Submit</button>
+          <Image
+            src={Smash}
+            alt='background'
+            className={`${styles['smash']}`}
+          />
+          <section className={`${styles['played-text']}`}>
+            <h3>Played Hrs</h3>
+            <div>
+              <p>
+                For{' '}
+                <input
+                  type='date'
+                  id={`${styles['played-date']}`}
+                  name='played'
+                  defaultValue={dateForDatabase}
+                ></input>
+              </p>
+              <div className={`${styles['hrs-list']} `}>
+                {hrsList.map((hr) => (
+                  <div
+                    key={hr}
+                    className={`${styles['hr']} ${
+                      hr === hrs ? styles['selected-hr'] : ''
+                    }`}
+                    onClick={() => setHrs(hr)}
+                    onKeyDown={() => setHrs(hr)}
+                    role='listbox'
+                    tabIndex={hr}
+                  >
+                    {hr}
+                  </div>
+                ))}
+              </div>
+              {/* <select defaultValue={'1'} name='hrs' id={`${styles['hrs']}`}>
+                <option value='0.5'>0.5</option>
+                <option value='1'>1</option>
+                <option value='1.5'>1.5</option>
+                <option value='2'>2</option>
+                <option value='2.5'>2.5</option>
+              </select> */}
+            </div>
+            <button>Submit</button>
+          </section>
         </div>
-        <div className={`${styles.payment}`}>
-          <span>Payment</span>
-          <input
-            type='text'
-            inputMode='numeric'
-            pattern='[0-9]+'
-            id='payment'
-            name='payment'
-          ></input>
-          <input type='date' id='payment-date' name='payment'></input>
-          <button>Submit</button>
-        </div>
-        <Link href='/playerSummary'>
-          <button>Player Summary</button>
-        </Link>
-        <Link href='/groupSummary'>
-          <button>Group Summary</button>
-        </Link>
       </main>
       <Footer />
     </>

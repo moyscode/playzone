@@ -2,103 +2,112 @@
   max-width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(100px, max-content);
   gap: 20px;
   --border-rad: 0.5rem;
   --border: 1px solid rgb(122, 121, 121);
-  margin: 5% 0;
+  margin: clamp(32px, 5%, 52px) 0;
 }
 
-.main .confirm {
-  display: grid;
-  gap: 5px;
-  grid-template-columns: 1fr;
-}
-
-.main .confirm .disabled {
-  cursor: auto;
-}
-
-.main .confirm .color {
-  color: var(--header-active-page);
-}
-
+.main .confirm,
 .main .played {
   display: grid;
-  gap: 5px;
+  gap: 0.25rem;
   grid-template-columns: 1fr 1fr;
+  background-color: var(--off-white);
+  border-radius: 0.5rem;
+  /* box-shadow: var(--box-shadow); */
+}
+
+.main .confirm .confirm-text,
+.main .played .played-text {
+  display: grid;
+  grid-template-rows: minmax(48px, 1fr) minmax(96px, 2fr) minmax(48px, 1fr);
+}
+
+.main .confirm .confirm-text h3,
+.main .played .played-text h3 {
+  align-self: center;
+}
+
+.main .confirm .confirm-text button,
+.main .played .played-text button {
+  margin: 0.5rem 0;
+  width: clamp(100px, 70%, 250px);
+}
+
+.main .confirm .players,
+.main .played .smash {
+  filter: grayscale(0.7);
+  width: 90%;
+  height: 90%;
+  padding: 5%;
+}
+
+#played-date {
+  border: none;
+}
+
+.hrs-list {
+  margin: 0.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: clamp(100px, 70%, 250px);
+  column-gap: 0.2rem;
+}
+
+.hrs-list .hr {
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #e7e1da;
+  flex-basis: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+.hrs-list .hr:hover {
+  border-radius: 0.25rem;
+  background-color: #c7c2bc;
+}
+
+.hrs-list .hr.selected-hr {
+  background-color: var(--blueMain);
+  color: white;
 }
 
 .main .played span {
   grid-column: span 2;
 }
 
-.main .payment {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  grid-column: span 2;
-}
-
-.main .payment input,
-.main .payment button {
-  margin: 5px;
-}
-
-.main .payment input {
-  width: clamp(80px, 100%, 300px);
-  margin-left: 12px;
-}
-
-.main > div {
-  border: var(--border);
+.main > section {
   border-radius: var(--border-rad);
-  padding: 10px;
-}
-
-.main > a {
-  grid-row: 3; /*placing summary buttons to 3rd row*/
-}
-.main > a > button {
-  width: 100%;
+  padding: 0.5rem;
 }
 
 .main button {
-  padding: 0 5px; /*padding on right & left*/
+  border: none;
+  background: var(--blueMain);
+  padding: 0 0.5em; /*padding on right & left*/
   cursor: pointer;
+  border-radius: 100vw;
+  transition: background-color 250ms;
+  color: white;
+  font-weight: 600;
+  font-kerning: auto;
 }
 
-@media screen and (max-width: 768px) {
+.main button:hover,
+.main button:focus-visible {
+  background: var(--blue5);
+}
+
+.main .confirm .section .disabled {
+  cursor: auto;
+}
+
+@media screen and (max-width: 500px) {
   .main {
-    margin: 5px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .main .payment {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column: span 1;
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    gap: 5px;
-  }
-
-  .main .payment > input {
-    grid-row: 2;
-    width: 100%;
-  }
-
-  .main .payment > button {
-    grid-row: 3; /*placing summary buttons to 3rd row*/
-    grid-column: span 2;
-  }
-
-  .main .payment input,
-  .main .payment button {
-    margin: 0;
-  }
-
-  .main > a {
-    grid-row: auto; /*switching summary rows to individual rows*/
+    gap: 0.5rem;
   }
 }
