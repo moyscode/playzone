@@ -100,8 +100,14 @@
   background: var(--blue5);
 }
 
-.main .confirm .section .disabled {
-  cursor: auto;
+.main .confirm .confirm-text .disabled {
+  cursor: default;
+  background: var(--lighter-grey);
+}
+.main .confirm .confirm-text .disabled:hover,
+.main .confirm .confirm-text .disabled:focus-visible {
+  cursor: default;
+  background: var(--lighter-grey);
 }
 
 @media screen and (max-width: 500px) {

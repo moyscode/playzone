@@ -22,7 +22,7 @@ export default function Home() {
   let tomorrowsDate = getNextWorkDay(new Date());
 
   const currentTime = todaysDate.toLocaleTimeString('en-IN', { hour12: false });
-  const isBeforeDeadline = +currentTime.substring(0, 2) > 17;
+  const isAfterDeadline = +currentTime.substring(0, 2) > 17;
 
   const hrsList = [0.5, 1.0, 1.5, 2.0, 2.5];
 
@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   const confirmButtonTextFunction = () => {
-    if (isBeforeDeadline) {
+    if (isAfterDeadline) {
       return 'Deadline over';
     } else if (confirmation === false) {
       return 'Confirm';
@@ -77,7 +77,7 @@ export default function Home() {
               {`Confirm your participation for ${tomorrowsDate.toDateString()}`}
             </p>
             <button
-              disabled={isBeforeDeadline}
+              disabled={isAfterDeadline}
               className={`${styles['confirm-button']} ${styles.disabled}`}
               onClick={handleClick}
             >
