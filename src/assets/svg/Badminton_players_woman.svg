@@ -380,12 +380,12 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.40845701"
-     inkscape:cx="366.01159"
-     inkscape:cy="506.78528"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="1592"
-     inkscape:window-y="-8"
+     inkscape:cx="182.39374"
+     inkscape:cy="508.0094"
+     inkscape:window-width="1600"
+     inkscape:window-height="796"
+     inkscape:window-x="-8"
+     inkscape:window-y="122"
      inkscape:window-maximized="1"
      inkscape:current-layer="g12" />
   <g
@@ -397,7 +397,8 @@
        id="g12"
        transform="scale(0.1)">
       <g
-         id="g953">
+         id="g953"
+         transform="matrix(-1,0,0,1,26964.402,0)">
         <path
            d="m 9362.02,5414.91 c 150.97,256.2 317.75,503.42 505.34,734.34 451.64,555.95 1036.64,1021.24 1719.44,1237.69 547.3,173.51 1131.5,180.18 1702.3,93.27 -101.5,55.36 -201.7,113.2 -300.3,173.75 -386.5,237.5 -763.9,520.14 -1209.7,604.01 -662.3,124.6 -1342.7,-231.1 -1780.95,-742.99 -678.9,-792.92 -1058.88,-1835.91 -1049.87,-2869.78 -0.02,-2.74 0.03,-5.49 0.03,-8.23 21.41,36.72 40.84,69.82 52.67,94.51 111.31,232.43 230.18,461.37 361.04,683.43"
            style="fill:#fae861;fill-opacity:1;fill-rule:nonzero;stroke:none"
