@@ -2,8 +2,8 @@ import { PageHeader } from '@/components/pageHeader/pageHeader';
 import { Footer } from '../components/footer/Footer';
 import styles from './Home.module.css';
 import Image from 'next/image';
-import Players from '../assets/svg/Badminton_players.svg';
-import Smash from '../assets/svg/Badminton_jumpSmash_ladyMan.svg';
+import Man from '../assets/svg/Badminton_players_man.svg';
+import Woman from '../assets/svg/Badminton_players_woman.svg';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -70,11 +70,7 @@ export default function Home() {
       <PageHeader />
       <main className={`${styles.main}`}>
         <div className={`${styles.confirm}`}>
-          <Image
-            src={Players}
-            alt='background'
-            className={`${styles['players']}`}
-          />
+          <Image src={Man} alt='background' className={`${styles['man']}`} />
           <section className={`${styles['confirm-text']}`}>
             <h3>Confirmation</h3>
             <p>
@@ -91,9 +87,9 @@ export default function Home() {
         </div>
         <div className={`${styles.played}`}>
           <Image
-            src={Smash}
+            src={Woman}
             alt='background'
-            className={`${styles['smash']}`}
+            className={`${styles['woman']}`}
           />
           <section className={`${styles['played-text']}`}>
             <h3>Played Hrs</h3>

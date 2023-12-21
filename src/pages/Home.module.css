@@ -36,9 +36,9 @@
   width: clamp(100px, 70%, 250px);
 }
 
-.main .confirm .players,
-.main .played .smash {
-  filter: grayscale(0.7);
+.main .confirm .man,
+.main .played .woman {
+  filter: grayscale(0.4);
   width: 90%;
   height: 90%;
   padding: 5%;
