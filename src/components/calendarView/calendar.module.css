@@ -8,4 +8,5 @@
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   z-index: var(--wrapper-z-index);
+  /* width: clamp(400px, 50%, 900px); */
 }

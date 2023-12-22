@@ -2,7 +2,7 @@
   max-width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: minmax(100px, max-content) minmax(300px, max-content);
+  grid-template-rows: minmax(100px, max-content) minmax(100px, max-content);
   gap: 20px;
   --border-rad: 0.5rem;
   --border: 1px solid rgb(122, 121, 121);
@@ -116,5 +116,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.5rem;
+  }
+  .player-calendar {
+    grid-column: 1 / 1;
   }
 }

@@ -31,7 +31,7 @@ export const CalendarBody = ({
     useState<MonthlyPlayerData>();
 
   const { asPath } = useRouter();
-  let player = playerName || asPath.substring(asPath.lastIndexOf('/') + 1);
+  let player = playerName ?? asPath.substring(asPath.lastIndexOf('/') + 1);
   const adjustedMonthNumber = month + 1;
 
   const getPlayerDataForMonth = useCallback(
@@ -124,7 +124,7 @@ export const CalendarBody = ({
   };
 
   let emptyDaysOfMonth = [];
-  for (var i = 0; i < firstDayOfMonth; i++) {
+  for (let i = 0; i < firstDayOfMonth; i++) {
     emptyDaysOfMonth.push(i);
   }
 
@@ -168,9 +168,7 @@ export const CalendarBody = ({
           <div className={`${styles.dayInfo} ${styles.weekend}`}>
             <div className={`${styles.day} `}>{day}</div>
             <div
-              className={`material-symbols-rounded ${styles[`${isToday}`]} ${
-                styles.weekend
-              } ${styles.hrs}`}
+              className={`material-symbols-rounded ${styles[isToday]} ${styles.weekend} ${styles.hrs}`}
             >
               Block
             </div>
@@ -183,9 +181,7 @@ export const CalendarBody = ({
           <div className={`${styles.dayInfo}`}>
             <div className={`${styles.day}`}>{day}</div>
             <div
-              className={`${styles[`${isToday}`]} ${styles.weekday} ${
-                styles.hrs
-              } ${
+              className={`${styles[isToday]} ${styles.weekday} ${styles.hrs} ${
                 confirmation === 'yes' && +playedHrs > 0
                   ? `${styles.playedAsPlanned}`
                   : ''
@@ -209,7 +205,7 @@ export const CalendarBody = ({
   };
 
   let daysOfMonth = [];
-  for (var i = 1; i <= lastDateOfMonth; i++) {
+  for (let i = 1; i <= lastDateOfMonth; i++) {
     daysOfMonth.push(i);
   }
 

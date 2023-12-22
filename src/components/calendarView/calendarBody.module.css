@@ -56,12 +56,13 @@
 .days .day {
   position: absolute;
   width: 50%;
-  border-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-index-of-two);
   background-color: var(--day-color);
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   font-size: clamp(0.75rem, 2vw, 1rem);
 }
 
@@ -79,7 +80,7 @@
   z-index: var(--z-index-of-one);
   border-radius: clamp(5px, 10%, 0.25rem);
   aspect-ratio: 1.5;
-  padding-top: 3vmax;
+  padding-top: clamp(12px, 3vmax, 20px);
   width: 100%;
 }
 
@@ -94,6 +95,7 @@
 .days .dayInfo .hrs.weekend {
   background-color: var(--dull-grey);
   cursor: default;
+  line-height: 1.5;
 }
 
 .days .dayInfo .hrs.weekday.playedAsPlanned {
