@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import styles from './calendarBody.module.css';
+import Image from 'next/image';
+import LeftBottom from '../../assets/svg/LeftBottom.svg';
+import RightTop from '../../assets/svg/RightTop.svg';
+import NotFound from '../../assets/svg/not_found2.svg';
+import { Legends } from './legends';
 import {
   PlayerData,
   MonthlyPlayerData,
@@ -12,11 +17,13 @@ export const CalendarBody = ({
   month,
   year,
   currentMonth,
+  playerName,
 }: {
   date: Date;
   month: number;
   year: number;
   currentMonth: string;
+  playerName?: string;
 }) => {
   const [playerData, setPlayerData] = useState<PlayerData[]>([]);
 
@@ -24,7 +31,7 @@ export const CalendarBody = ({
     useState<MonthlyPlayerData>();
 
   const { asPath } = useRouter();
-  let player = asPath.substring(asPath.lastIndexOf('/') + 1);
+  let player = playerName || asPath.substring(asPath.lastIndexOf('/') + 1);
   const adjustedMonthNumber = month + 1;
 
   const getPlayerDataForMonth = useCallback(
@@ -104,8 +111,6 @@ export const CalendarBody = ({
   useEffect(() => {
     getSummaryValues(playerData);
   }, [playerData]);
-
-  // console.log(monthlyPlayerData);
 
   const playedDatesUnFormatted = playerData.map((a: PlayerData) => a.date);
   const playedDates = playedDatesUnFormatted.map((b) => b.substring(0, 10));
@@ -220,10 +225,35 @@ export const CalendarBody = ({
     <>
       {isEmptyObject ? (
         <div className={`${styles['no-summary']}`}>
-          {`Data does not exist for ${currentMonth} ${year}`}
+          <Image
+            src={RightTop}
+            alt='background'
+            className={`${styles['left-top']}`}
+          />
+
+          <Image
+            src={NotFound}
+            alt='background'
+            className={`${styles['not-found']}`}
+          />
+          <Image
+            src={LeftBottom}
+            alt='background'
+            className={`${styles['right-bottom']}`}
+          />
         </div>
       ) : (
         <div className={`${styles['calendar-body']}`}>
+          <Image
+            src={RightTop}
+            alt='background'
+            className={`${styles['left-top']}`}
+          />
+          <Image
+            src={LeftBottom}
+            alt='background'
+            className={`${styles['right-bottom']}`}
+          />
           <div
             className={`${styles['summary-text']}`}
           >{`${player} has played for ${
@@ -242,6 +272,7 @@ export const CalendarBody = ({
             <li>Sat</li>
           </ul>
           <ul className={`${styles.days}`}>{arr}</ul>
+          <Legends />
         </div>
       )}
     </>

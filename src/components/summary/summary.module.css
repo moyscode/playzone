@@ -1,7 +1,7 @@
 .summary {
   background: var(--summary-tab-background);
   width: 100%;
-  min-height: 75vh;
+  min-height: 463.6px;
 }
 .wrapper {
   position: relative;

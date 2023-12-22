@@ -130,3 +130,21 @@
     width: clamp(325px, 80vw, 1000px);
   }
 } */
+.left-top,
+.right-bottom {
+  position: absolute;
+  filter: grayscale();
+  z-index: var(--background-z-index);
+  opacity: 0.5;
+  transform: scale(-1, 1);
+}
+
+.left-top {
+  left: 0;
+  top: 0;
+}
+
+.right-bottom {
+  right: 0;
+  bottom: 0;
+}

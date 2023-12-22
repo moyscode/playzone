@@ -3,8 +3,10 @@
   justify-content: center;
   align-items: center;
   background-color: var(--off-white);
-  border-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   position: fixed;
+  z-index: 9;
   bottom: 0;
   box-shadow: 2px 0 2px rgba(86, 86, 86, 0.1), 1px 0 2px rgba(86, 86, 86, 0.1);
 }

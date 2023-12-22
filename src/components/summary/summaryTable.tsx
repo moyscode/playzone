@@ -116,7 +116,6 @@ export const SummaryTable = ({
             alt='background'
             className={`${styles['left-top']}`}
           />
-
           <Image
             src={NotFound}
             alt='background'
@@ -135,6 +134,7 @@ export const SummaryTable = ({
             alt='background'
             className={`${styles['left-top']}`}
           />
+
           <Image
             src={LeftBottom}
             alt='background'

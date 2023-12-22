@@ -1,3 +1,11 @@
 .calendar {
   background: var(--off-white);
+  width: 100%;
+}
+
+.wrapper {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  z-index: var(--wrapper-z-index);
 }

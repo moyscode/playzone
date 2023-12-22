@@ -1,8 +1,9 @@
-import { useContext } from "react";
-import { MonthContext } from "@/contexts/MonthContextProvider";
-import { PageHeader } from "@/components/pageHeader/pageHeader";
-import styles from "./playerSummary.module.css";
-import { Calendar } from "@/components/calendarView/calendar";
+import { useContext } from 'react';
+import { MonthContext } from '@/contexts/MonthContextProvider';
+import { PageHeader } from '@/components/pageHeader/pageHeader';
+import { Footer } from '@/components/footer/Footer';
+import styles from './playerSummary.module.css';
+import { Calendar } from '@/components/calendarView/calendar';
 
 export default function Home() {
   const monthContextObject = useContext(MonthContext);
@@ -24,6 +25,7 @@ export default function Home() {
           onClick={changeMonth!} // 👈️ non-null assertion
         />
       </main>
+      <Footer />
     </>
   );
 }

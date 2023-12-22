@@ -1,8 +1,9 @@
-import { useContext } from "react";
-import { MonthContext } from "@/contexts/MonthContextProvider";
-import { Summary } from "@/components/summary/summary";
-import { PageHeader } from "@/components/pageHeader/pageHeader";
-import styles from "./groupSummary.module.css";
+import { useContext } from 'react';
+import { MonthContext } from '@/contexts/MonthContextProvider';
+import { Summary } from '@/components/summary/summary';
+import { PageHeader } from '@/components/pageHeader/pageHeader';
+import styles from './groupSummary.module.css';
+import { Footer } from '@/components/footer/Footer';
 
 export default function Home() {
   const monthContextObject = useContext(MonthContext);
@@ -22,6 +23,7 @@ export default function Home() {
           onClick={changeMonth!} // 👈️ non-null assertion
         />
       </main>
+      <Footer />
     </>
   );
 }

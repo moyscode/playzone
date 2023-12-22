@@ -1,13 +1,14 @@
 .wrapper {
   position: -webkit-sticky;
   position: sticky;
-  top: 1rem;
+  top: 1;
   z-index: var(--header-z-index);
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--off-white);
-  border-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   box-shadow: var(--box-shadow);
 }
 

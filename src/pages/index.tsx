@@ -1,12 +1,20 @@
 import { PageHeader } from '@/components/pageHeader/pageHeader';
-import { Footer } from '../components/footer/Footer';
+import { Footer } from '@/components/footer/Footer';
 import styles from './Home.module.css';
 import Image from 'next/image';
 import Man from '../assets/svg/Badminton_players_man.svg';
 import Woman from '../assets/svg/Badminton_players_woman.svg';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Calendar } from '@/components/calendarView/calendar';
+import { MonthContext } from '@/contexts/MonthContextProvider';
 
 export default function Home() {
+  const monthContextObject = useContext(MonthContext);
+  const monthNumber = monthContextObject?.monthNumber;
+  const month = monthContextObject?.month;
+  const year = monthContextObject?.year;
+  const changeMonth = monthContextObject?.changeMonth;
+
   // Depending on timezone, your results will vary
   const todaysDate = new Date();
   const dateForDatabase = todaysDate.toISOString().split('T')[0];
@@ -78,7 +86,9 @@ export default function Home() {
             </p>
             <button
               disabled={isAfterDeadline}
-              className={`${styles['confirm-button']} ${styles.disabled}`}
+              className={`${styles['confirm-button']} ${
+                isAfterDeadline ? styles.disabled : ''
+              }`}
               onClick={handleClick}
             >
               {confirmButtonText}
@@ -130,6 +140,16 @@ export default function Home() {
             <button>Submit</button>
           </section>
         </div>
+        <section className={`${styles['player-calendar']}`}>
+          <Calendar
+            date={todaysDate}
+            monthNumber={monthNumber!} // 👈️ non-null assertion
+            month={month!} // 👈️ non-null assertion
+            year={year!} // 👈️ non-null assertion
+            onClick={changeMonth!} // 👈️ non-null assertion
+            playerName='mani1'
+          />
+        </section>
       </main>
       <Footer />
     </>
