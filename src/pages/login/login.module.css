@@ -1,0 +1,89 @@
+.main {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: clamp(200px, 30%, 400px);
+  width: clamp(350px, 50%, 500px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  background-color: var(--off-white);
+  border-radius: 0.5rem;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  background-image: url('../../assets/svg/Abstract_background.svg');
+  background-blend-mode: luminosity;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content,
+.smash {
+  width: 90%;
+  height: 90%;
+  padding: 5%;
+}
+
+.smash {
+  margin-left: 1.5rem;
+  margin-bottom: 2rem;
+  filter: drop-shadow(3px 7px 4px var(--blue7));
+}
+.content {
+  padding-top: 4rem;
+  margin-right: 1.5rem;
+}
+
+.input {
+  width: 95%;
+  border: none;
+  background-color: var(--dull-grey);
+  border-radius: 0.25rem;
+}
+
+.submit {
+  border: none;
+  background: var(--blueMain);
+  padding: 0 1em; /*padding on right & left*/
+  cursor: pointer;
+  border-radius: 100vw;
+  transition: background-color 250ms;
+  color: white;
+  font-weight: 400;
+  font-kerning: auto;
+  margin-top: 10px;
+}
+
+.content .hint {
+  position: absolute;
+  bottom: 3rem;
+  font-size: smaller;
+}
+
+@media screen and (max-width: 640px) {
+  .smash {
+    margin-bottom: 1rem;
+  }
+  .content {
+    padding-top: 1rem;
+  }
+  .content .hint {
+    bottom: 1rem;
+  }
+}
+
+@media screen and (640px <= width <= 768px) {
+  .smash {
+    margin-bottom: 1rem;
+  }
+  .content {
+    padding-top: 1rem;
+  }
+  .content .hint {
+    bottom: 1rem;
+  }
+}

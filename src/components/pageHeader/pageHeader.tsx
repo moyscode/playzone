@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Home from '../../assets/svg/home.svg';
 import Login from '../../assets/svg/login.svg';
 import Team from '../../assets/svg/team.svg';
+import Player from '../../assets/svg/player.svg';
 
 export const PageHeader = () => {
   const { asPath } = useRouter();
@@ -12,6 +13,7 @@ export const PageHeader = () => {
   let homeRegex = /^\/(?!.)/; //Negative lookahead assertion used only to match '/' in path
   let gsRegex = /^\/group.*/;
   let psRegex = /^\/player.*/;
+  let loginRegex = /^\/login.*/;
 
   const menuInfo = [
     { route: 'Home', icon: Home, path: '/', pathRegEx: homeRegex },
@@ -22,10 +24,16 @@ export const PageHeader = () => {
       pathRegEx: gsRegex,
     },
     {
-      route: 'Login',
-      icon: Login,
+      route: 'Player',
+      icon: Player,
       path: '/playerSummary',
       pathRegEx: psRegex,
+    },
+    {
+      route: 'Login',
+      icon: Login,
+      path: '/login',
+      pathRegEx: loginRegex,
     },
   ];
 

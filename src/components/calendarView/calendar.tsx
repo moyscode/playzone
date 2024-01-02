@@ -25,7 +25,7 @@ export const Calendar = ({
         month={monthNumber}
         year={year}
         currentMonth={month}
-        playerName={playerName}
+        playerName={playerName ?? 'John Doe'}
       />
     </div>
   );

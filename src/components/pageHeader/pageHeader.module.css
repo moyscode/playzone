@@ -41,11 +41,11 @@
 }
 
 .wrapper .links .active {
-  color: var(--blue5);
+  color: var(--blueMain);
 }
 
 .wrapper .links .active .link {
-  border-bottom: 2px solid var(--blue5);
+  border-bottom: 2px solid var(--blueMain);
 }
 
 .wrapper .links .active .link .link-logo {
