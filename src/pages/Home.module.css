@@ -6,7 +6,16 @@
   gap: 20px;
   --border-rad: 0.5rem;
   --border: 1px solid rgb(122, 121, 121);
-  margin: clamp(20px, 2%, 52px) 0;
+  margin: 10px 0 clamp(20px, 2%, 52px) 0;
+}
+
+.player-name {
+  margin-top: 10px;
+}
+
+.player-name:before {
+  content: 'Welcome ';
+  font-weight: 200;
 }
 
 .main > section {

@@ -36,7 +36,6 @@ export default function Home() {
 
   const [confirmation, setConfirmation] = useState(false);
   const [hrs, setHrs] = useState(1);
-  console.log('🚀 ~ file: index.tsx:31 ~ Home ~ hrs:', hrs);
 
   const fetchData = async () => {
     const res = await fetch('/api/addConfirmation', {
@@ -76,6 +75,7 @@ export default function Home() {
   return (
     <>
       <PageHeader />
+      <h3 className={`${styles['player-name']}`}>John Doe</h3>
       <main className={`${styles.main}`}>
         <div className={`${styles.confirm}`}>
           <Image src={Man} alt='background' className={`${styles['man']}`} />
@@ -129,13 +129,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              {/* <select defaultValue={'1'} name='hrs' id={`${styles['hrs']}`}>
-                <option value='0.5'>0.5</option>
-                <option value='1'>1</option>
-                <option value='1.5'>1.5</option>
-                <option value='2'>2</option>
-                <option value='2.5'>2.5</option>
-              </select> */}
             </div>
             <button>Submit</button>
           </section>
@@ -147,7 +140,7 @@ export default function Home() {
             month={month!} // 👈️ non-null assertion
             year={year!} // 👈️ non-null assertion
             onClick={changeMonth!} // 👈️ non-null assertion
-            playerName='mani1'
+            playerName='John Doe'
           />
         </section>
       </main>
