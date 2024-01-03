@@ -66,12 +66,9 @@ export default function Home() {
 
   const confirmButtonText = confirmButtonTextFunction();
 
-  const confirmationButtonClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
+  const confirmationButtonClick = () => {
     confirmationApiCall();
   };
-
-  useEffect(() => {}, [confirmation]);
 
   return (
     <>

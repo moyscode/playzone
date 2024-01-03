@@ -6,8 +6,13 @@ const getPlayerNames = async (req: NextApiRequest, res: NextApiResponse) => {
 
   return await db
     .any(`SELECT DISTINCT player FROM players`)
-    .then((dbResponse) => {
-      res.status(200).send(dbResponse);
+    .then((dbResponse: { player: string }[]) => {
+      let players: string[] = [];
+      for (const playerItem of dbResponse) {
+        players.push(playerItem.player.trim());
+      }
+
+      res.status(200).send(players);
     })
     .catch((err) => {
       res.status(500).send(err);

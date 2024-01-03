@@ -9,7 +9,7 @@ import { AutoComplete } from '@/components/autoComplete/autoComplete';
 
 export default function Login() {
   const [players, setPlayers] = useState<string[]>([]);
-  console.log('🚀 ~ file: index.tsx:11 ~ Login ~ players:', players);
+  const [userInput, setUserInput] = useState<string>('');
 
   const getPlayers = async () => {
     const res = await axios('/api/getPlayerNames', {
@@ -18,17 +18,34 @@ export default function Login() {
         'Content-Type': 'application/json',
       },
     });
-    const playerNamesData: { player: string }[] = await res.data;
-    let players: string[] = [];
-    for (const playerItem of playerNamesData) {
-      players.push(playerItem.player.trim());
-    }
-    setPlayers(players);
+    const playersFromDb: string[] = await res.data;
+    setPlayers(playersFromDb);
   };
 
   useEffect(() => {
     getPlayers();
   }, []);
+
+  const userAuthApiCall = async () => {
+    const res = await axios('/api/userAuth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        playerName: userInput,
+      },
+    });
+    const resData = await res.data;
+    console.log(
+      '🚀 ~ file: index.tsx:44 ~ userAuthApiCall ~ resData:',
+      resData
+    );
+  };
+
+  const handleSubmit = () => {
+    userAuthApiCall();
+  };
 
   return (
     <>
@@ -37,8 +54,10 @@ export default function Login() {
         <Image src={Smash} alt='background' className={`${styles['smash']}`} />
         <section className={`${styles['content']}`}>
           <p>Enter your USERNAME</p>
-          <AutoComplete suggestions={players} />
-          <button className={`${styles.submit}`}>Submit</button>
+          <AutoComplete userNameUpdate={setUserInput} suggestions={players} />
+          <button className={`${styles.submit}`} onClick={handleSubmit}>
+            Submit
+          </button>
           <p className={`${styles['hint']}`}>
             Online registration is possible for this portal.
           </p>

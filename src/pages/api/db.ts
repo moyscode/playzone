@@ -1,5 +1,5 @@
-import pgPromise from "pg-promise";
-import { createSingleton } from "@/helpers/singletonCreator";
+import pgPromise from 'pg-promise';
+import { createSingleton } from '@/helpers/singletonCreator';
 
 const pgp = pgPromise({});
 
@@ -17,7 +17,7 @@ interface IDatabaseScope {
 }
 
 export function getDB(): IDatabaseScope {
-  return createSingleton<IDatabaseScope>("my-app-db-space", () => {
+  return createSingleton<IDatabaseScope>('my-app-db-space', () => {
     return {
       db: pgp(dbConnection),
       pgp,

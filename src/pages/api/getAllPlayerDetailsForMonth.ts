@@ -1,6 +1,6 @@
-import { PlayerData, AllPlayerData } from "../../../ProjectTypes.types";
-import { getDB } from "./db";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { PlayerData, AllPlayerData } from '../../../ProjectTypes.types';
+import { getDB } from './db';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const getAllPlayerDetailsForMonth = async (
   req: NextApiRequest,
@@ -20,7 +20,7 @@ const getAllPlayerDetailsForMonth = async (
       if (isEmptyArray) {
         res.status(200).send([]);
       } else {
-        // console.log(data);
+        //
         let allPlayerData: AllPlayerData = data.reduce(
           (accumulator, current) => {
             if (
@@ -30,10 +30,10 @@ const getAllPlayerDetailsForMonth = async (
                 name: current.name,
                 hours_played: +current.hours_played,
                 confirmedAndNotPlayed:
-                  current.confirmation === "yes" && +current.hours_played === 0
+                  current.confirmation === 'yes' && +current.hours_played === 0
                     ? 1
                     : 0,
-                notConfirmedAndPlayed: current.confirmation === "no" ? 1 : 0,
+                notConfirmedAndPlayed: current.confirmation === 'no' ? 1 : 0,
               };
               accumulator.push(obj);
             } else {
@@ -44,12 +44,12 @@ const getAllPlayerDetailsForMonth = async (
               //update the specific object using index
               accumulator[objIndex].hours_played += +current.hours_played;
               if (
-                current.confirmation === "yes" &&
+                current.confirmation === 'yes' &&
                 +current.hours_played === 0
               ) {
                 accumulator[objIndex].confirmedAndNotPlayed++;
               }
-              if (current.confirmation === "no") {
+              if (current.confirmation === 'no') {
                 accumulator[objIndex].notConfirmedAndPlayed++;
               }
             }

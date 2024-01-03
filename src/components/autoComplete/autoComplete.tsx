@@ -1,12 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './autoComplete.module.css';
 import useComponentVisible from './useComponentVisible';
 
-export const AutoComplete = ({ suggestions }: { suggestions: string[] }) => {
+export const AutoComplete = ({
+  suggestions,
+  userNameUpdate,
+}: {
+  suggestions: string[];
+  userNameUpdate: (val: string) => void;
+}) => {
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [userInput, setUserInput] = useState<string>('');
+
+  useEffect(() => {
+    userNameUpdate(userInput);
+  }, [userInput, userNameUpdate]);
+
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(true);
 
