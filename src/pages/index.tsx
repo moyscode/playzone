@@ -1,6 +1,7 @@
 import { PageHeader } from '@/components/pageHeader/pageHeader';
 import { Footer } from '@/components/footer/Footer';
 import styles from './Home.module.css';
+import axios from 'axios';
 import Image from 'next/image';
 import Man from '../assets/svg/Badminton_players_man.svg';
 import Woman from '../assets/svg/Badminton_players_woman.svg';
@@ -37,19 +38,19 @@ export default function Home() {
   const [confirmation, setConfirmation] = useState(false);
   const [hrs, setHrs] = useState(1);
 
-  const fetchData = async () => {
-    const res = await fetch('/api/addConfirmation', {
+  const confirmationApiCall = async () => {
+    const res = await axios('/api/addConfirmation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
+      data: {
         player: 'mani1',
         confirmation: 'yes',
         date: dateForDatabase,
-      }),
+      },
     });
-    const newData = await res.json();
+    const newData = await res.data;
     setConfirmation((current) => !current);
   };
 
@@ -65,9 +66,9 @@ export default function Home() {
 
   const confirmButtonText = confirmButtonTextFunction();
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const confirmationButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    fetchData();
+    confirmationApiCall();
   };
 
   useEffect(() => {}, [confirmation]);
@@ -89,7 +90,7 @@ export default function Home() {
               className={`${styles['confirm-button']} ${
                 isAfterDeadline ? styles.disabled : ''
               }`}
-              onClick={handleClick}
+              onClick={confirmationButtonClick}
             >
               {confirmButtonText}
             </button>

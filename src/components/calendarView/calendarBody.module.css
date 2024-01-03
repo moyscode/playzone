@@ -72,7 +72,7 @@
 
 .days .dayInfo .active {
   border-radius: 15%;
-  border: var(--day-border) 4px solid;
+  border: var(--blueMain) 4px solid;
 }
 
 .days .dayInfo .hrs.weekday,

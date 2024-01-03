@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+  z-index: 99;
+}
+
+.input {
+  width: 95%;
+  border: none;
+  background-color: var(--dull-grey);
+  border-radius: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+.no-suggestions {
+  position: absolute;
+  width: 95%;
+  background-color: var(--dull-grey);
+  color: #464444;
+  padding: 0 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.suggestions {
+  position: absolute;
+  width: 95%;
+  border: none;
+  list-style: none;
+  scroll-behavior: smooth;
+  margin-top: 0;
+  max-height: 10rem;
+  overflow-y: auto;
+  padding-left: 0;
+}
+
+.suggestions li {
+  padding: 0 0.5rem;
+  background-color: var(--dull-grey);
+}
+
+.suggestion-active {
+  color: var(--blueMain);
+  cursor: pointer;
+  font-weight: 500;
+}
+.suggestions li:hover {
+  background-color: var(--blueMain);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}

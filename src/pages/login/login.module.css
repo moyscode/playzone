@@ -43,6 +43,7 @@
   border: none;
   background-color: var(--dull-grey);
   border-radius: 0.25rem;
+  padding-left: 0.25rem;
 }
 
 .submit {
