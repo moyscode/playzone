@@ -150,6 +150,8 @@ export const CalendarBody = ({
     let playedHrs = '-';
     let confirmation = '';
 
+    console.log('🚀 ~ file: calendarBody.tsx:132 ~ renderDays ~ day:', day);
+
     // If the player has played on that day, we get additional data to show it appropriately on the calendar;
     if (played) {
       let playedData: PlayerData[] = playerData.filter((item: PlayerData) => {
@@ -158,7 +160,12 @@ export const CalendarBody = ({
           new Date(year, month, day).toISOString().substring(0, 10)
         );
       });
+
       playedHrs = playedData[0].hours_played;
+      console.log(
+        '🚀 ~ file: calendarBody.tsx:167 ~ renderDays ~ playedHrs:',
+        playedHrs
+      );
       confirmation = playedData[0].confirmation;
     }
 
