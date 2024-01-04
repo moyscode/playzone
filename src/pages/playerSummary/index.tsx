@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer/Footer';
 import styles from './playerSummary.module.css';
 import { Calendar } from '@/components/calendarView/calendar';
 
-export default function Home() {
+export default function Player() {
   const monthContextObject = useContext(MonthContext);
   const monthNumber = monthContextObject?.monthNumber;
   const month = monthContextObject?.month;
