@@ -45,9 +45,9 @@ export const CalendarBody = ({
       });
       const data = await response.json();
       setPlayerData(data);
-
-      return data;
+      console.log('🚀 ~ file: calendarBody.tsx:50 ~ data:', data);
     },
+
     [player, year, adjustedMonthNumber]
   );
 
