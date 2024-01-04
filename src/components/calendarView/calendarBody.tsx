@@ -45,7 +45,6 @@ export const CalendarBody = ({
       });
       const data = await response.json();
       setPlayerData(data);
-      console.log('🚀 ~ file: calendarBody.tsx:50 ~ data:', data);
     },
 
     [player, year, adjustedMonthNumber]
@@ -112,8 +111,7 @@ export const CalendarBody = ({
     getSummaryValues(playerData);
   }, [playerData]);
 
-  const playedDatesUnFormatted = playerData.map((a: PlayerData) => a.date);
-  const playedDates = playedDatesUnFormatted.map((b) => b.substring(0, 10));
+  const playedDates = playerData.map((a: PlayerData) => a.date);
 
   let firstDayOfMonth = new Date(year, month, 1).getDay(), // getting first day of month
     lastDateOfMonth = new Date(year, month + 1, 0).getDate(); // getting last date of month
@@ -142,30 +140,25 @@ export const CalendarBody = ({
       new Date(year, month, day).getDay() === 0 ||
       new Date(year, month, day).getDay() === 6;
 
-    //check is the player has played on this date
+    //check if the player has played on this date
     let played = playedDates.includes(
-      new Date(year, month, day).toISOString().substring(0, 10)
+      new Date(year, month, day, 6).toISOString().substring(0, 10)
     );
 
     let playedHrs = '-';
     let confirmation = '';
 
-    console.log('🚀 ~ file: calendarBody.tsx:132 ~ renderDays ~ day:', day);
-
     // If the player has played on that day, we get additional data to show it appropriately on the calendar;
     if (played) {
       let playedData: PlayerData[] = playerData.filter((item: PlayerData) => {
         return (
-          item['date'].substring(0, 10) ===
-          new Date(year, month, day).toISOString().substring(0, 10)
+          item['date'] ===
+          new Date(year, month, day, 6).toISOString().substring(0, 10)
         );
       });
 
       playedHrs = playedData[0].hours_played;
-      console.log(
-        '🚀 ~ file: calendarBody.tsx:167 ~ renderDays ~ playedHrs:',
-        playedHrs
-      );
+
       confirmation = playedData[0].confirmation;
     }
 

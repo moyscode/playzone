@@ -10,7 +10,7 @@ const getAllPlayerDetailsForMonth = async (
   const { db } = getDB();
   return await db
     .any(
-      `SELECT id, name,confirmation,hours_played,date
+      `SELECT id, name,confirmation,hours_played,date, CAST(date as CHAR(10))
       FROM play_details
       WHERE  EXTRACT(YEAR FROM date) = ${year}
       AND EXTRACT(MONTH FROM date) = ${month}`
@@ -57,7 +57,6 @@ const getAllPlayerDetailsForMonth = async (
           },
           []
         );
-        // console.log(allPlayerData);
         res.status(200).send(allPlayerData);
       }
     })
