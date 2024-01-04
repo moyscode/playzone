@@ -3,9 +3,10 @@ import { Footer } from '@/components/footer/Footer';
 import styles from './Home.module.css';
 import axios from 'axios';
 import Image from 'next/image';
-import Man from '../assets/svg/Badminton_players_man.svg';
-import Woman from '../assets/svg/Badminton_players_woman.svg';
-import { useState, useEffect, useContext } from 'react';
+import Man from '@/assets/svg/Badminton_players_man.svg';
+import Woman from '@/assets/svg/Badminton_players_woman.svg';
+import Dialog from '@/assets/svg/Confused_failure.svg';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { Calendar } from '@/components/calendarView/calendar';
 import { MonthContext } from '@/contexts/MonthContextProvider';
 
@@ -31,7 +32,7 @@ export default function Home() {
   let tomorrowsDate = getNextWorkDay(new Date());
 
   const currentTime = todaysDate.toLocaleTimeString('en-IN', { hour12: false });
-  const isAfterDeadline = +currentTime.substring(0, 2) > 17;
+  const isAfterDeadline = +currentTime.substring(0, 2) > 19;
 
   const hrsList = [0.5, 1.0, 1.5, 2.0, 2.5];
 
@@ -66,15 +67,40 @@ export default function Home() {
 
   const confirmButtonText = confirmButtonTextFunction();
 
+  const user = 'John Doe';
   const confirmationButtonClick = () => {
-    confirmationApiCall();
+    if (user === 'John Doe') {
+      setShowModal(true);
+    } else {
+      confirmationApiCall();
+    }
   };
+
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (dialogRef.current?.open && !showModal) {
+      dialogRef.current?.close();
+    } else if (!dialogRef.current?.open && showModal) {
+      dialogRef.current?.showModal();
+    }
+  }, [showModal]);
 
   return (
     <>
       <PageHeader />
       <h3 className={`${styles['player-name']}`}>John Doe</h3>
       <main className={`${styles.main}`}>
+        <dialog ref={dialogRef}>
+          <h3>This event is postponed!</h3>
+          <Image src={Dialog} alt='Event Failure' />
+          <p>
+            John Doe cannot perform this action. Join our group and login to
+            perform this action.
+          </p>
+          <button onClick={() => setShowModal(false)}>Close</button>
+        </dialog>
         <div className={`${styles.confirm}`}>
           <Image src={Man} alt='background' className={`${styles['man']}`} />
           <section className={`${styles['confirm-text']}`}>
@@ -128,7 +154,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <button>Submit</button>
+            <button onClick={confirmationButtonClick}>Submit</button>
           </section>
         </div>
         <section className={`${styles['player-calendar']}`}>
