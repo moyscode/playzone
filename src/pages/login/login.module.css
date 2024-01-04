@@ -47,8 +47,9 @@
   filter: drop-shadow(3px 7px 4px var(--blue7));
 }
 .content {
-  padding-top: 4rem;
-  margin-right: 1.5rem;
+  display: grid;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: 0.25rem;
 }
 
 .submit {
@@ -60,42 +61,27 @@
   transition: background-color 250ms;
   color: white;
   font-weight: 400;
-  font-kerning: auto;
-  margin-top: 10px;
+  height: clamp(2rem, 60%, 4rem);
+  margin: 0 0;
+  width: fit-content;
+}
+
+.submit:hover,
+.submit:focus-visible {
+  background: var(--blue5);
 }
 
 .content .hint {
-  position: absolute;
-  bottom: 3rem;
   font-size: smaller;
 }
 
-@media screen and (max-width: 640px) {
-  .smash {
-    margin-bottom: 1rem;
-  }
-  .content {
-    padding-top: 1rem;
-  }
-  .content .hint {
-    bottom: 1rem;
-  }
+.content p:first-child {
+  align-self: self-end;
 }
 
-@media screen and (640px <= width <= 768px) {
-  .smash {
-    margin-bottom: 1rem;
-  }
+@media screen and (max-height: 600px) {
   .content {
-    padding-top: 1rem;
-  }
-  .content .hint {
-    bottom: 1rem;
-  }
-}
-
-@media screen and (750px <= height) {
-  .main {
-    height: clamp(200px, 30%, 400px);
+    grid-template-rows: repeat(4, minmax(0, 2.5rem));
+    padding: 2%;
   }
 }

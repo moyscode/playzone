@@ -37,10 +37,6 @@ export default function Login() {
       },
     });
     const resData = await res.data;
-    console.log(
-      '🚀 ~ file: index.tsx:44 ~ userAuthApiCall ~ resData:',
-      resData
-    );
   };
 
   const handleSubmit = () => {
