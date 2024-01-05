@@ -1,5 +1,6 @@
 .wrapper {
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   z-index: var(--header-z-index);
   display: flex;
@@ -72,7 +73,7 @@
   }
 }
 
-@media (640px <= width >= 768px) {
+@media (640px <= width <= 768px) {
   .wrapper .links .link .link-text {
     font-size: clamp(12px, 1rem, 16px);
   }
