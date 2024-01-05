@@ -77,6 +77,7 @@ export default function Login() {
       noUserDialog.current?.showModal();
     }
   }, [showNoUserDialogModal]);
+  console.log('🚀 ~ file: index.tsx:80 ~ Login ~ userInput:', userInput);
 
   return (
     <>
@@ -103,16 +104,17 @@ export default function Login() {
         <section className={`${styles['content']}`}>
           <p>Enter your USERNAME</p>
           <AutoComplete userNameUpdate={setUserInput} suggestions={players} />
+          <p className={`${styles['hint']}`}>
+            Online registration is possible for this portal.
+          </p>
           <button
+            type='button'
             className={`${styles.submit}`}
             onClick={handleSubmit}
             disabled={userInput.length < 3}
           >
             Submit
           </button>
-          <p className={`${styles['hint']}`}>
-            Online registration is possible for this portal.
-          </p>
         </section>
       </main>
       <Footer />

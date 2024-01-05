@@ -32,7 +32,7 @@ export default function Home() {
   let tomorrowsDate = getNextWorkDay(new Date());
 
   const currentTime = todaysDate.toLocaleTimeString('en-IN', { hour12: false });
-  const isAfterDeadline = +currentTime.substring(0, 2) > 19;
+  const isAfterDeadline = +currentTime.substring(0, 2) > 17;
 
   const hrsList = [0.5, 1.0, 1.5, 2.0, 2.5];
 
