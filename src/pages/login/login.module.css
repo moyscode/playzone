@@ -6,6 +6,7 @@
   width: clamp(350px, 50%, 500px);
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   background-color: var(--off-white);
+  --border-rad: 0.5rem;
   border-radius: 1rem;
   isolation: isolate;
 
@@ -49,7 +50,10 @@
 }
 .content {
   display: grid;
-  grid-template-rows: repeat(4, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(
+      0,
+      1fr
+    );
   gap: 0.25rem;
 }
 
@@ -64,12 +68,19 @@
   font-weight: 400;
   height: clamp(2rem, 60%, 4rem);
   margin: 0 0;
-  width: fit-content;
+  width: clamp(4rem, 60%, 8rem);
 }
 
 .submit:hover,
 .submit:focus-visible {
   background: var(--blue5);
+}
+
+.submit:disabled:hover,
+.submit:disabled:focus-visible,
+.submit:disabled {
+  cursor: default;
+  background: var(--lighter-grey);
 }
 
 .content .hint {
@@ -78,6 +89,79 @@
 
 .content p:first-child {
   align-self: self-end;
+}
+
+.main dialog {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: clamp(300px, 70%, 500px);
+  height: clamp(200px, 50%, 400px);
+  border: none;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-rad);
+  text-align: center;
+}
+
+.main dialog img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  z-index: -1;
+  opacity: 0.4;
+  filter: grayscale(0.5);
+}
+
+.main dialog h3 {
+  margin-top: 1rem;
+}
+
+.main dialog p {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  height: fit-content;
+  font-weight: 700;
+}
+
+.main dialog button {
+  width: clamp(100px, 25%, 200px);
+  height: 2rem;
+  align-self: self-end;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+  margin: auto;
+}
+
+.main button {
+  border: none;
+  background: var(--blueMain);
+  padding: 0 0.5em; /*padding on right & left*/
+  cursor: pointer;
+  border-radius: 100vw;
+  transition: background-color 250ms;
+  color: white;
+  font-weight: 600;
+  font-kerning: auto;
+}
+
+.main button:hover,
+.main button:focus-visible {
+  background: var(--blue5);
 }
 
 @media screen and (max-height: 600px) {

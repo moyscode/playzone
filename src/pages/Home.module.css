@@ -48,7 +48,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: auto 0.5rem;
   text-align: center;
   height: fit-content;
   font-weight: 700;
@@ -166,10 +166,7 @@
   background: var(--blue5);
 }
 
-.main .confirm .confirm-text .disabled {
-  cursor: default;
-  background: var(--lighter-grey);
-}
+.main .confirm .confirm-text .disabled,
 .main .confirm .confirm-text .disabled:hover,
 .main .confirm .confirm-text .disabled:focus-visible {
   cursor: default;

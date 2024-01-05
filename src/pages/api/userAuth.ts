@@ -9,7 +9,7 @@ const userAuth = async (req: NextApiRequest, res: NextApiResponse) => {
     return await db
       .any(
         `SELECT email FROM players
-     WHERE player LIKE '${playerName}%'`
+         WHERE player LIKE '${playerName}%'`
       )
       .then((dbResponse) => {
         let email: string = dbResponse[0].email.trim();
@@ -20,7 +20,11 @@ const userAuth = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(200).send(hiddenEmail);
       })
       .catch((err) => {
-        res.status(500).send(err);
+        if (err.message.includes('Cannot read properties of undefined')) {
+          res.status(500).send('User does not exist');
+        } else {
+          res.status(500).send(err);
+        }
       });
   } else {
     res.status(400).send('Query does not match the required format');
