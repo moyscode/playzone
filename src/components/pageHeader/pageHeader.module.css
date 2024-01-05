@@ -1,6 +1,5 @@
 .wrapper {
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   top: 0;
   z-index: var(--header-z-index);
   display: flex;
