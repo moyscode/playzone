@@ -1,0 +1,152 @@
+.calendar-body {
+  width: 100%;
+  padding: 0 2vw 2vw 2vw;
+}
+
+.summary-text {
+  padding-left: 0.25rem;
+  border: 2px solid rgb(221, 220, 220);
+  border-radius: 0.25rem;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+.calendar-body ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar-body .days {
+  margin-bottom: 0px;
+}
+.calendar-body li {
+  color: var(--dark-grey);
+  width: calc(100% / 7);
+  font-size: 1rem;
+}
+
+.calendar-body .weeks li {
+  font-weight: 500;
+  cursor: default;
+}
+
+.calendar-body .weeks li:first-child,
+.calendar-body .weeks li:last-child {
+  color: var(--dull-unselected);
+}
+
+.calendar-body .days li {
+  z-index: var(--z-index-of-one);
+  position: relative;
+}
+
+.calendar-body .days li:nth-child(7n + 7),
+.calendar-body .days li:nth-child(7n + 8),
+.calendar-body .days li:first-child {
+  color: var(--dull-unselected);
+}
+
+.days li.data-wrapper {
+  height: 100%;
+}
+
+.days li .dayInfo {
+  padding: 0.5vw;
+}
+
+.days .day {
+  position: absolute;
+  width: 50%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-index-of-two);
+  background-color: var(--day-color);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.weekend .day {
+  color: var(--dark-grey);
+}
+
+.days .dayInfo .active {
+  border-radius: 15%;
+  border: var(--blueMain) 4px solid;
+}
+
+.days .dayInfo .confirmations.weekday,
+.days .dayInfo .confirmations.weekend {
+  z-index: var(--z-index-of-one);
+  border-radius: clamp(5px, 10%, 0.25rem);
+  aspect-ratio: 1.5;
+  padding-top: clamp(12px, 3vmax, 20px);
+  width: 100%;
+}
+
+.confirmations {
+  font-size: clamp(12px, 3vw, 40px);
+}
+
+.days .dayInfo .confirmations.weekday {
+  background-color: var(--hrs-color);
+}
+
+.days .dayInfo .confirmations.weekend {
+  background-color: var(--dull-grey);
+  cursor: default;
+  line-height: 1.5;
+}
+
+/* .days .dayInfo .hrs.weekday.playedAsPlanned {
+  background-color: var(--playedAsPlanned);
+}
+.days .dayInfo .hrs.weekday.notConfirmedButPlayed {
+  background-color: var(--notConfirmedButPlayed);
+}
+.days .dayInfo .hrs.weekday.notTurnedUp {
+  background-color: var(--notTurnedUp);
+} */
+
+.no-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+/* @media screen and (max-width: 640px) {
+  .calendar-body {
+    width: clamp(325px, 95vw, 600px);
+  }
+}
+
+@media screen and (640px <= width >= 768px) {
+  .calendar-body {
+    width: clamp(325px, 90vw, 720px);
+  }
+}
+
+@media screen and (786px <= width) {
+  .calendar-body {
+    width: clamp(325px, 80vw, 1000px);
+  }
+} */
+.left-top,
+.right-bottom {
+  position: absolute;
+  filter: grayscale();
+  z-index: var(--background-z-index);
+  opacity: 0.5;
+  transform: scale(-1, 1);
+}
+
+.left-top {
+  left: 0;
+  top: 0;
+}
+
+.right-bottom {
+  right: 0;
+  bottom: 0;
+}

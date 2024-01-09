@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  width: clamp(200px, 70%, 500px);
+  width: clamp(300px, 80%, 500px);
   height: clamp(200px, 50%, 400px);
   border: none;
   box-shadow: var(--box-shadow);
@@ -34,8 +34,8 @@
   width: 80%;
   height: 80%;
   z-index: -1;
-  opacity: 0.4;
-  filter: grayscale(0.5);
+  opacity: 0.8;
+  filter: grayscale(0.2);
 }
 
 .main dialog h3 {
@@ -43,15 +43,22 @@
 }
 
 .main dialog p {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto 0.5rem;
+  margin: auto 1rem;
   text-align: center;
   height: fit-content;
   font-weight: 700;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3rem;
+
+  background: var(--dull-grey);
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
 }
 
 .main dialog button {

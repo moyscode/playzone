@@ -93,12 +93,9 @@ export default function Home() {
       <h3 className={`${styles['player-name']}`}>John Doe</h3>
       <main className={`${styles.main}`}>
         <dialog ref={dialogRef}>
-          <h3>You cannot do that!</h3>
+          <h3>John Doe is imaginary!</h3>
           <Image src={Dialog} alt='Event Failure' />
-          <p>
-            John Doe cannot perform this action. Join our group and login to
-            perform this action.
-          </p>
+          <p>Join our group and login to perform this action.</p>
           <button onClick={() => setShowModal(false)}>Close</button>
         </dialog>
         <div className={`${styles.confirm}`}>

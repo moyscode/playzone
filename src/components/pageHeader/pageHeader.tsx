@@ -2,11 +2,10 @@ import styles from './pageHeader.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Home from '../../assets/svg/home.svg';
-import Login from '../../assets/svg/login.svg';
-import Team from '../../assets/svg/team.svg';
-import Player from '../../assets/svg/player.svg';
-
+import Home from './home.svg';
+import Login from './sign-in-alt.svg';
+import Team from './users-alt.svg';
+import Confirmations from './calendar-check.svg';
 export const PageHeader = () => {
   const { asPath } = useRouter();
 
@@ -24,9 +23,9 @@ export const PageHeader = () => {
       pathRegEx: gsRegex,
     },
     {
-      route: 'Player',
-      icon: Player,
-      path: '/playerSummary',
+      route: 'Confirmations',
+      icon: Confirmations,
+      path: '/confirmations',
       pathRegEx: psRegex,
     },
     {
