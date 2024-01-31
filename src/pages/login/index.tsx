@@ -77,7 +77,6 @@ export default function Login() {
       noUserDialog.current?.showModal();
     }
   }, [showNoUserDialogModal]);
-  console.log('🚀 ~ file: index.tsx:80 ~ Login ~ userInput:', userInput);
 
   return (
     <>
@@ -85,7 +84,10 @@ export default function Login() {
       <main className={`${styles.main}`}>
         <dialog ref={mailSentDialog}>
           <h3>Mail Sent!</h3>
-          <Image src={MailSent} alt='Mail Sent' />
+          <Image
+            src={MailSent}
+            alt='Mail Sent'
+          />
           <p>
             Mail sent with login information to {email}. Follow the
             instructions.
@@ -96,14 +98,24 @@ export default function Login() {
         </dialog>
         <dialog ref={noUserDialog}>
           <h3>No Entry!</h3>
-          <Image src={NoUser} alt='No such user' />
+          <Image
+            src={NoUser}
+            alt='No such user'
+          />
           <p>The username you entered does not exist.</p>
           <button onClick={() => setShowNoUserDialogModal(false)}>Close</button>
         </dialog>
-        <Image src={Smash} alt='background' className={`${styles['smash']}`} />
+        <Image
+          src={Smash}
+          alt='background'
+          className={`${styles['smash']}`}
+        />
         <section className={`${styles['content']}`}>
           <p>Enter your USERNAME</p>
-          <AutoComplete userNameUpdate={setUserInput} suggestions={players} />
+          <AutoComplete
+            userNameUpdate={setUserInput}
+            suggestions={players}
+          />
           <p className={`${styles['hint']}`}>
             Online registration is possible for this portal.
           </p>

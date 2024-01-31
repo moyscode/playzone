@@ -5,7 +5,7 @@ const pgp = pgPromise({});
 
 const devConfig = `${process.env.PG_USER}://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
 
-const prodConfig = `${process.env.SUPABASE_DATABASE}://${process.env.SUPABASE_USER}:${process.env.SUPABASE_PASSWORD}@${process.env.SUPABASE_HOST}:${process.env.SUPABASE_PORT}/${process.env.SUPABASE_DATABASE_NAME}`;
+const prodConfig = `${process.env.SUPABASE_CONNECTION_STRING}`;
 
 const dbConnection = process.env.VERCEL_ENV ? prodConfig : devConfig;
 
