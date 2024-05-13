@@ -11,7 +11,7 @@ export const PageHeader = () => {
 
   let homeRegex = /^\/(?!.)/; //Negative lookahead assertion used only to match '/' in path
   let gsRegex = /^\/group.*/;
-  let psRegex = /^\/player.*/;
+  let coRegex = /^\/confirmations.*/;
   let loginRegex = /^\/login.*/;
 
   const menuInfo = [
@@ -26,7 +26,7 @@ export const PageHeader = () => {
       route: 'Confirmations',
       icon: Confirmations,
       path: '/confirmations',
-      pathRegEx: psRegex,
+      pathRegEx: coRegex,
     },
     {
       route: 'Login',
@@ -59,7 +59,10 @@ export const PageHeader = () => {
 
   return (
     <header className={`${styles.wrapper}`}>
-      <Link href={'/'} className={`${styles['logo']}`}>
+      <Link
+        href={'/'}
+        className={`${styles['logo']}`}
+      >
         PaulA
       </Link>
       <div className={`${styles['links']}`}>{linksToRender}</div>

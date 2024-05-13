@@ -9,18 +9,16 @@ const prodConfig = `${process.env.SUPABASE_CONNECTION_STRING}`;
 
 const dbConnection = process.env.VERCEL_ENV ? prodConfig : devConfig;
 
-console.log(dbConnection);
-
 interface IDatabaseScope {
-  db: pgPromise.IDatabase<any>;
-  pgp: pgPromise.IMain;
+	db: pgPromise.IDatabase<any>;
+	pgp: pgPromise.IMain;
 }
 
 export function getDB(): IDatabaseScope {
-  return createSingleton<IDatabaseScope>('my-app-db-space', () => {
-    return {
-      db: pgp(dbConnection),
-      pgp,
-    };
-  });
+	return createSingleton<IDatabaseScope>('my-app-db-space', () => {
+		return {
+			db: pgp(dbConnection),
+			pgp
+		};
+	});
 }
