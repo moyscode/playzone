@@ -117,7 +117,7 @@ export default function Login() {
             suggestions={players}
           />
           <p className={`${styles['hint']}`}>
-            Online registration is possible for this portal.
+            Online registration is not possible for this portal.
           </p>
           <button
             type='button'
