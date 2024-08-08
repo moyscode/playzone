@@ -1,58 +1,58 @@
 .legend {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 2vw 1vw 2vw;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 2vw 1vw 2vw;
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0.2vw 0.2vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0.2vw 0.2vw;
 }
 
 .circle {
-  width: 1vmax;
-  height: 1vmax;
-  border-radius: 50%;
-  margin: 0 0.5vw;
-  position: relative;
-  display: inline-block;
+	width: 1vmax;
+	height: 1vmax;
+	border-radius: 50%;
+	margin: 0 0.5vw;
+	position: relative;
+	display: inline-block;
 }
 
 .legend-text {
-  font-size: clamp(0.75rem, 2vw, 1rem);
+	font-size: clamp(0.75rem, 2vw, 1rem);
 }
 
 .playedAsPlanned {
-  background-color: var(--playedAsPlanned);
+	background-color: var(--playedAsPlanned);
 }
 
 .notConfirmedButPlayed {
-  background-color: var(--notConfirmedButPlayed);
+	background-color: var(--notConfirmedButPlayed);
 }
 .notTurnedUp {
-  background-color: var(--notTurnedUp);
+	background-color: var(--notTurnedUp);
 }
 
 .extra {
-  background-color: var(--extraTime);
+	background-color: var(--extraTime);
 }
 
-/* @media screen and (max-width: 640px) {
-  .legend {
-    width: clamp(325px, 95vw, 600px);
-  }
+@media screen and (max-width: 640px) {
+	.legend {
+		margin-bottom: 25px;
+	}
 }
 
-@media screen and (640px <= width >= 768px) {
+/* @media screen and (640px <= width >= 768px) {
   .legend {
     width: clamp(325px, 90vw, 720px);
   }
-}
+} */
 
-@media screen and (786px <= width) {
+/* @media screen and (786px <= width) {
   .legend {
     width: clamp(325px, 80vw, 1000px);
   }
